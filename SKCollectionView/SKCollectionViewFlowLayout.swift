@@ -7,11 +7,11 @@
 //
 
 import Foundation
-
+// TODO: Get animations from SKCollectionView constructor
 class SKCollectionViewFlowLayout: UICollectionViewFlowLayout
 {
     var indexPathsToInsert = [IndexPath]()
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,7 +28,6 @@ class SKCollectionViewFlowLayout: UICollectionViewFlowLayout
         } else {
             // Fallback on earlier versions
         }
-        
     }
 
     override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem])
@@ -42,13 +41,9 @@ class SKCollectionViewFlowLayout: UICollectionViewFlowLayout
                 case .insert:
                     self.indexPathsToInsert.append(indexPath)
                 case .delete: break
-                    
                 case .reload: break
-                    
                 case .move: break
-                    
                 case .none: break
-                    
                 }
             }
         }
@@ -60,14 +55,21 @@ class SKCollectionViewFlowLayout: UICollectionViewFlowLayout
         self.indexPathsToInsert.removeAll()
     }
     
-    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let layoutAttributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath)
-        if indexPathsToInsert.contains(itemIndexPath)
-        {
-            layoutAttributes?.alpha = 0.0
-            layoutAttributes?.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }
+    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes?
+    {
+        guard let layoutAttributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath) else { return nil }
         
+        if self.indexPathsToInsert.contains(itemIndexPath)
+        {
+            return self.insertModification(layoutAttributes: layoutAttributes)
+        }
+
+        return layoutAttributes
+    }
+
+    private func insertModification(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes
+    {
+        layoutAttributes.transform = CGAffineTransform(translationX: 0, y: 500.0 )
         return layoutAttributes
     }
 }
