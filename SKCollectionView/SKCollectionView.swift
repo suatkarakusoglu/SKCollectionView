@@ -30,16 +30,8 @@ open class SKCollectionView: UICollectionView
     {
         self.delegate = self
         self.dataSource = self
-        let collectionFlowLayout = self.skGetLayout()
-        collectionFlowLayout.minimumLineSpacing = 0
-        collectionFlowLayout.minimumInteritemSpacing = 0
-        
-        if #available(iOS 9.0, *) {
-            collectionFlowLayout.sectionFootersPinToVisibleBounds = true
-            collectionFlowLayout.sectionHeadersPinToVisibleBounds = true
-        } else {
-            // Fallback on earlier versions
-        }
+        let skCollectionViewFlowLayout = SKCollectionViewFlowLayout()
+        self.setCollectionViewLayout(skCollectionViewFlowLayout, animated: false)
     }
 
     public func skSetCollectionDatas(collectionDatas: [SKCollectionData?])

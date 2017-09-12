@@ -22,6 +22,7 @@
 		E2011D421F6679550062168F /* SKCollectionViewXDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D371F6679550062168F /* SKCollectionViewXDataSource.swift */; };
 		E2011D431F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */; };
 		E2011D451F6679D90062168F /* SKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D441F6679D90062168F /* SKExtensions.swift */; };
+		E27631901F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		E2011D371F6679550062168F /* SKCollectionViewXDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXDataSource.swift; sourceTree = "<group>"; };
 		E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXDelegateFlowLayout.swift; sourceTree = "<group>"; };
 		E2011D441F6679D90062168F /* SKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKExtensions.swift; sourceTree = "<group>"; };
+		E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */,
 				E2011D2E1F6679540062168F /* SKCollectionViewXPullToRefresh.swift */,
 				E2011D441F6679D90062168F /* SKExtensions.swift */,
+				E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */,
 				E2011D171F6678B30062168F /* SKCollectionView.h */,
 				E2011D181F6678B30062168F /* Info.plist */,
 			);
@@ -243,6 +246,7 @@
 				E2011D3A1F6679550062168F /* SKCollectionData.swift in Sources */,
 				E2011D3D1F6679550062168F /* SKCollectionModel.swift in Sources */,
 				E2011D3C1F6679550062168F /* SKCollectionModelProtocol.swift in Sources */,
+				E27631901F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift in Sources */,
 				E2011D411F6679550062168F /* SKCollectionReusableView.swift in Sources */,
 				E2011D451F6679D90062168F /* SKExtensions.swift in Sources */,
 			);
