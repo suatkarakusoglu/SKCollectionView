@@ -22,6 +22,11 @@
 		E2011D421F6679550062168F /* SKCollectionViewXDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D371F6679550062168F /* SKCollectionViewXDataSource.swift */; };
 		E2011D431F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */; };
 		E2011D451F6679D90062168F /* SKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D441F6679D90062168F /* SKExtensions.swift */; };
+		E20DCEA11F70778B00FAA518 /* SKCollectionViewXEndless.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20DCEA01F70778B00FAA518 /* SKCollectionViewXEndless.swift */; };
+		E20DCEA51F7079E700FAA518 /* SKEndlessCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20DCEA31F7079E700FAA518 /* SKEndlessCCell.swift */; };
+		E20DCEA61F7079E700FAA518 /* SKEndlessCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20DCEA41F7079E700FAA518 /* SKEndlessCCell.xib */; };
+		E20DCEA81F7079F900FAA518 /* SKEndlessCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20DCEA71F7079F900FAA518 /* SKEndlessCModel.swift */; };
+		E20DCEAC1F70807800FAA518 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20DCEAB1F70807800FAA518 /* Media.xcassets */; };
 		E27631901F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +59,11 @@
 		E2011D371F6679550062168F /* SKCollectionViewXDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXDataSource.swift; sourceTree = "<group>"; };
 		E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXDelegateFlowLayout.swift; sourceTree = "<group>"; };
 		E2011D441F6679D90062168F /* SKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKExtensions.swift; sourceTree = "<group>"; };
+		E20DCEA01F70778B00FAA518 /* SKCollectionViewXEndless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXEndless.swift; sourceTree = "<group>"; };
+		E20DCEA31F7079E700FAA518 /* SKEndlessCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEndlessCCell.swift; sourceTree = "<group>"; };
+		E20DCEA41F7079E700FAA518 /* SKEndlessCCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKEndlessCCell.xib; sourceTree = "<group>"; };
+		E20DCEA71F7079F900FAA518 /* SKEndlessCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEndlessCModel.swift; sourceTree = "<group>"; };
+		E20DCEAB1F70807800FAA518 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +107,8 @@
 		E2011D161F6678B30062168F /* SKCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E20DCEAB1F70807800FAA518 /* Media.xcassets */,
+				E20DCEA21F7079BD00FAA518 /* SKCollectionViewEndlessModel */,
 				E2011D351F6679540062168F /* SKCollectionCell.swift */,
 				E2011D2F1F6679540062168F /* SKCollectionData.swift */,
 				E2011D321F6679540062168F /* SKCollectionModel.swift */,
@@ -108,6 +120,7 @@
 				E2011D331F6679540062168F /* SKCollectionViewXDelegate.swift */,
 				E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */,
 				E2011D2E1F6679540062168F /* SKCollectionViewXPullToRefresh.swift */,
+				E20DCEA01F70778B00FAA518 /* SKCollectionViewXEndless.swift */,
 				E2011D441F6679D90062168F /* SKExtensions.swift */,
 				E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */,
 				E2011D171F6678B30062168F /* SKCollectionView.h */,
@@ -123,6 +136,16 @@
 				E2011D241F6678B30062168F /* Info.plist */,
 			);
 			path = SKCollectionViewTests;
+			sourceTree = "<group>";
+		};
+		E20DCEA21F7079BD00FAA518 /* SKCollectionViewEndlessModel */ = {
+			isa = PBXGroup;
+			children = (
+				E20DCEA31F7079E700FAA518 /* SKEndlessCCell.swift */,
+				E20DCEA41F7079E700FAA518 /* SKEndlessCCell.xib */,
+				E20DCEA71F7079F900FAA518 /* SKEndlessCModel.swift */,
+			);
+			path = SKCollectionViewEndlessModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +242,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E20DCEAC1F70807800FAA518 /* Media.xcassets in Resources */,
+				E20DCEA61F7079E700FAA518 /* SKEndlessCCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +261,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E20DCEA81F7079F900FAA518 /* SKEndlessCModel.swift in Sources */,
 				E2011D421F6679550062168F /* SKCollectionViewXDataSource.swift in Sources */,
 				E2011D3F1F6679550062168F /* SKCollectionReusableModel.swift in Sources */,
 				E2011D3E1F6679550062168F /* SKCollectionViewXDelegate.swift in Sources */,
 				E2011D391F6679550062168F /* SKCollectionViewXPullToRefresh.swift in Sources */,
 				E2011D401F6679550062168F /* SKCollectionCell.swift in Sources */,
 				E2011D431F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift in Sources */,
+				E20DCEA51F7079E700FAA518 /* SKEndlessCCell.swift in Sources */,
 				E2011D3B1F6679550062168F /* SKCollectionView.swift in Sources */,
 				E2011D3A1F6679550062168F /* SKCollectionData.swift in Sources */,
+				E20DCEA11F70778B00FAA518 /* SKCollectionViewXEndless.swift in Sources */,
 				E2011D3D1F6679550062168F /* SKCollectionModel.swift in Sources */,
 				E2011D3C1F6679550062168F /* SKCollectionModelProtocol.swift in Sources */,
 				E27631901F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift in Sources */,

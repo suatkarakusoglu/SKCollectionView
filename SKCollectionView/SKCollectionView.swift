@@ -10,9 +10,13 @@ import UIKit
 
 open class SKCollectionView: UICollectionView
 {
+    static let skBundle = Bundle(identifier: "com.zamekan.SKCollectionView")!
     open var blockPullToRefresh: (() -> Void)?
     public var collectionDatas: [SKCollectionData] = [SKCollectionData]()
     private var alreadyRegisteredCells: [String] = []
+    
+    public var endReachedModel: SKCollectionModel?
+    public var endReachedBlock: (() -> Void)?
     
     required public init?(coder aDecoder: NSCoder)
     {
@@ -78,7 +82,7 @@ open class SKCollectionView: UICollectionView
         return indexPath
     }
     
-    private func skGetLayout() -> UICollectionViewFlowLayout
+    public func skGetLayout() -> UICollectionViewFlowLayout
     {
         return self.collectionViewLayout as! UICollectionViewFlowLayout
     }
@@ -216,7 +220,15 @@ extension SKCollectionView
         let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == nibIdentifier }
         guard !isAlreadyRegistered else { return }
         
-        let nibCell = UINib(nibName: nibIdentifier, bundle: nil)
+        let bundleToUse = { () -> Bundle in
+            if nibIdentifier == "SKEndlessCCell"{
+                return SKCollectionView.skBundle
+            }else {
+                return Bundle.main
+            }
+        }()
+
+        let nibCell = UINib(nibName: nibIdentifier, bundle: bundleToUse)
         self.register(nibCell, forCellWithReuseIdentifier: cellIdentifier)
         self.alreadyRegisteredCells.append(nibIdentifier)
     }
