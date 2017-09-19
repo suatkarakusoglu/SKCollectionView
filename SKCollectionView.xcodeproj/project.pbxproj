@@ -26,6 +26,8 @@
 		E20DCEA61F7079E700FAA518 /* SKEndlessCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20DCEA41F7079E700FAA518 /* SKEndlessCCell.xib */; };
 		E20DCEA81F7079F900FAA518 /* SKEndlessCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20DCEA71F7079F900FAA518 /* SKEndlessCModel.swift */; };
 		E20DCEAC1F70807800FAA518 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20DCEAB1F70807800FAA518 /* Media.xcassets */; };
+		E20FD1E21F70F3660015A305 /* Media.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = E20DCEAB1F70807800FAA518 /* Media.xcassets */; };
+		E20FD1E31F70F3660015A305 /* SKEndlessCCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = E20DCEA41F7079E700FAA518 /* SKEndlessCCell.xib */; };
 		E27631901F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E276318F1F68866F00F8F3AE /* SKCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -258,6 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E20FD1E21F70F3660015A305 /* Media.xcassets in Sources */,
+				E20FD1E31F70F3660015A305 /* SKEndlessCCell.xib in Sources */,
 				E20DCEA81F7079F900FAA518 /* SKEndlessCModel.swift in Sources */,
 				E2011D421F6679550062168F /* SKCollectionViewXDataSource.swift in Sources */,
 				E2011D3F1F6679550062168F /* SKCollectionReusableModel.swift in Sources */,
