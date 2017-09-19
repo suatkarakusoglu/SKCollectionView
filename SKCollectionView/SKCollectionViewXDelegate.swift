@@ -53,16 +53,12 @@ extension SKCollectionView: UICollectionViewDelegate
         self.endReachedBlock = endReachedBlock
     }
     
-    public func skEndlessExecutionFinished()
+    public func skEndlessExecutionFinished(isNoMoreItemExists: Bool? = false)
     {
+        self.endHasNoItemLeft = isNoMoreItemExists ?? false
         if let endReachedModel = self.endReachedModel
         {
             self.removeModel(modelToRemove: endReachedModel)
         }
-    }
-    
-    public func skEndlessNoMoreItemExists()
-    {
-        self.endHasNoItemLeft = true
     }
 }
