@@ -36,22 +36,6 @@ extension SKCollectionView: UICollectionViewDelegate
         }
     }
     
-    public func skSetEndless(loadingLength: CGFloat,  endReachedBlock: @escaping (() -> Void))
-    {
-        let endlessModelSize = { () -> CGSize in
-            if self.skGetLayout().scrollDirection == .vertical
-            {
-                return CGSize(width: UIScreen.main.bounds.size.width, height: loadingLength)
-                
-            }else {
-                return CGSize(width: loadingLength, height: UIScreen.main.bounds.size.height)
-            }
-        }()
-        
-        let endlessModel = SKEndlessCModel(loadingSize: endlessModelSize)
-        self.skSetEndless(endReachedModel: endlessModel, endReachedBlock: endReachedBlock)
-    }
-    
     public func skSetEndless(endReachedModel: SKCollectionModel, endReachedBlock: @escaping (() -> Void))
     {
         self.endReachedModel = endReachedModel
