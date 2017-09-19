@@ -169,19 +169,21 @@ extension SKCollectionView
         self.reloadData()
     }
     
-    public func skInsertModelAtTail(model: SKCollectionModel, scrollToIt: Bool = true)
+    public func skInsertModelAtTail(model: SKCollectionModel, scrollToIt: Bool = false)
     {
         self.skRegisterCellFor(modelToRegister: model)
         let lastSectionIndex = self.collectionDatas.count - 1
         self.collectionDatas[lastSectionIndex].models.append(model)
         let lastIndexPath = IndexPath(row: self.collectionDatas[lastSectionIndex].models.count - 1, section: lastSectionIndex)
         self.insertItems(at: [lastIndexPath])
-        self.skScrollToItem(at: lastIndexPath)
+        if scrollToIt {
+            self.skScrollToItem(at: lastIndexPath)
+        }
     }
     
-    public func skInsertModelsAtTail(models: [SKCollectionModel], scrollToIt: Bool = true)
+    public func skInsertModelsAtTail(models: [SKCollectionModel], scrollToIt: Bool = false)
     {
-        models.forEach{ self.skInsertModelAtTail(model: $0) }
+        models.forEach{ self.skInsertModelAtTail(model: $0, scrollToIt: scrollToIt) }
     }
 }
 
