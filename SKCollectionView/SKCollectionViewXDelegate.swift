@@ -39,7 +39,7 @@ extension SKCollectionView: UICollectionViewDelegate
                 return
             }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
-                self.skInsertModelAtTail(model: endReachedModel, scrollToIt: false)
+                self.skInsertModelAtTail(model: endReachedModel, scrollToIt: true)
                 self.endReachedBlock?()
             })
         }
@@ -53,11 +53,9 @@ extension SKCollectionView: UICollectionViewDelegate
     
     public func skEndReachedExecuted()
     {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-            if let endReachedModel = self.endReachedModel
-            {
-                self.removeModel(modelToRemove: endReachedModel)
-            }
-        })
+        if let endReachedModel = self.endReachedModel
+        {
+            self.removeModel(modelToRemove: endReachedModel)
+        }
     }
 }
