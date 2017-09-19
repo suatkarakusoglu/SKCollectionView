@@ -18,8 +18,11 @@ extension SKCollectionView: UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         guard !self.endHasNoItemLeft else { return }
-
         guard let endReachedModel = self.endReachedModel else { return }
+        
+        let isLoadingInProgress = self.collectionDatas.last?.models.contains(where: { $0 === endReachedModel }) ?? false
+        guard !isLoadingInProgress else { return }
+        
         let lastIndexSection = self.collectionDatas.count
         guard let lastIndexRow = self.collectionDatas.last?.models.count else { return }
         
@@ -31,9 +34,11 @@ extension SKCollectionView: UICollectionViewDelegate
             }
         }()
         
+        guard isScrollExists else { return }
+        
         let lastIndexPath = IndexPath(row: lastIndexRow - 1, section: lastIndexSection - 1)
         let isLastItemGoingToRender = lastIndexPath == indexPath
-        if isLastItemGoingToRender && isScrollExists
+        if isLastItemGoingToRender
         {
             let currentlyRenderingModel = self.collectionDatas[indexPath.section].models[indexPath.row]
             let isEndReachedModelRendering = currentlyRenderingModel === self.endReachedModel
