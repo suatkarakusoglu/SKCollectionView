@@ -16,7 +16,8 @@ open class SKCollectionView: UICollectionView
     
     public var endReachedModel: SKCollectionModel?
     public var endReachedBlock: (() -> Void)?
-    
+    public var endHasNoItemLeft: Bool = false
+
     required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)

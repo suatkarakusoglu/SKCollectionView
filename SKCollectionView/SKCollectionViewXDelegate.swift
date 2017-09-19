@@ -17,6 +17,8 @@ extension SKCollectionView: UICollectionViewDelegate
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
+        guard !self.endHasNoItemLeft else { return }
+
         guard let endReachedModel = self.endReachedModel else { return }
         let lastIndexSection = self.collectionDatas.count
         guard let lastIndexRow = self.collectionDatas.last?.models.count else { return }
@@ -45,17 +47,22 @@ extension SKCollectionView: UICollectionViewDelegate
         }
     }
     
-    public func skSetEndless(endReachedModel: SKCollectionModel, endReachedBlock: @escaping (() -> Void))
+    public func skEndlessConfig(endReachedModel: SKCollectionModel, endReachedBlock: @escaping (() -> Void))
     {
         self.endReachedModel = endReachedModel
         self.endReachedBlock = endReachedBlock
     }
     
-    public func skEndReachedExecuted()
+    public func skEndlessExecutionFinished()
     {
         if let endReachedModel = self.endReachedModel
         {
             self.removeModel(modelToRemove: endReachedModel)
         }
+    }
+    
+    public func skEndlessNoMoreItemExists()
+    {
+        self.endHasNoItemLeft = true
     }
 }
