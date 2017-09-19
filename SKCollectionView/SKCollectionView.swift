@@ -34,8 +34,15 @@ open class SKCollectionView: UICollectionView
     {
         self.delegate = self
         self.dataSource = self
-        let skCollectionViewFlowLayout = SKCollectionViewFlowLayout()
-        self.setCollectionViewLayout(skCollectionViewFlowLayout, animated: false)
+        let layout = self.skGetLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        if #available(iOS 9.0, *) {
+            layout.sectionFootersPinToVisibleBounds = true
+            layout.sectionHeadersPinToVisibleBounds = true
+        } else {
+            debugPrint("Can not pin the header-footer views under iOS 9.")
+        }
     }
 
     public func skSetCollectionDatas(collectionDatas: [SKCollectionData?])
