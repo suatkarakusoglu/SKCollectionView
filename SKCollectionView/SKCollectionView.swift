@@ -10,7 +10,6 @@ import UIKit
 
 open class SKCollectionView: UICollectionView
 {
-    static let skBundle = Bundle(identifier: "com.zamekan.SKCollectionView")!
     open var blockPullToRefresh: (() -> Void)?
     public var collectionDatas: [SKCollectionData] = [SKCollectionData]()
     private var alreadyRegisteredCells: [String] = []
@@ -221,16 +220,8 @@ extension SKCollectionView
         let cellIdentifier = cellReuseIdentifier ?? nibIdentifier
         let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == nibIdentifier }
         guard !isAlreadyRegistered else { return }
-        
-        let bundleToUse = { () -> Bundle in
-            if nibIdentifier == "SKEndlessCCell"{
-                return SKCollectionView.skBundle
-            }else {
-                return Bundle.main
-            }
-        }()
 
-        let nibCell = UINib(nibName: nibIdentifier, bundle: bundleToUse)
+        let nibCell = UINib(nibName: nibIdentifier, bundle: Bundle.main)
         self.register(nibCell, forCellWithReuseIdentifier: cellIdentifier)
         self.alreadyRegisteredCells.append(nibIdentifier)
     }

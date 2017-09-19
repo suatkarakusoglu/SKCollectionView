@@ -20,9 +20,18 @@ extension SKCollectionView: UICollectionViewDelegate
         guard let endReachedModel = self.endReachedModel else { return }
         let lastIndexSection = self.collectionDatas.count
         guard let lastIndexRow = self.collectionDatas.last?.models.count else { return }
+        
+        let isScrollExists = { () -> Bool in
+            if self.skGetLayout().scrollDirection == .vertical {
+                return self.contentSize.height > self.frame.size.height
+            }else {
+                return self.contentSize.width > self.frame.size.width
+            }
+        }()
+        
         let lastIndexPath = IndexPath(row: lastIndexRow - 1, section: lastIndexSection - 1)
         let isLastItemGoingToRender = lastIndexPath == indexPath
-        if isLastItemGoingToRender
+        if isLastItemGoingToRender && isScrollExists
         {
             let currentlyRenderingModel = self.collectionDatas[indexPath.section].models[indexPath.row]
             let isEndReachedModelRendering = currentlyRenderingModel === self.endReachedModel
