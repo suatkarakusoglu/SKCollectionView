@@ -23,9 +23,9 @@ extension SKCollectionView: UICollectionViewDelegate
         
         let isScrollExists = { () -> Bool in
             if self.skGetLayout().scrollDirection == .vertical {
-                return self.contentSize.height > self.frame.size.height
+                return self.contentSize.height >= self.frame.size.height
             }else {
-                return self.contentSize.width > self.frame.size.width
+                return self.contentSize.width >= self.frame.size.width
             }
         }()
         
