@@ -12,7 +12,7 @@ extension SKCollectionView: UICollectionViewDataSource
 {
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let currentModel = self.skGetModelAtIndexPath(indexPath: indexPath)
-        
+        currentModel.ownerSKCollectionView = self
         if let boundCollectionCell = currentModel.boundCollectionCell {
             return boundCollectionCell
         }

@@ -12,6 +12,7 @@ import UIKit
 
 open class SKCollectionModel: SKCollectionModelProtocol
 {
+    open var ownerSKCollectionView: SKCollectionView?
     open var modelId: String?
     open var boundCollectionCell: SKCollectionCell?
     open var shouldBindToCell: Bool = false
@@ -19,11 +20,6 @@ open class SKCollectionModel: SKCollectionModelProtocol
 
     public init()
     {
-    }
-    
-    open func refreshCell()
-    {
-        self.boundCollectionCell?.applyModel(kollectionModel: self)
     }
     
     open func bindToCell(withId: String = String.skRandomString(length: 16))
@@ -56,6 +52,11 @@ open class SKCollectionModel: SKCollectionModelProtocol
     open func refreshBoundCell()
     {
         self.boundCollectionCell?.applyModel(kollectionModel: self)
+    }
+    
+    open func removeFromCollection()
+    {
+        self.ownerSKCollectionView?.removeModel(modelToRemove: self)
     }
     
     open func cellSize() -> CGSize { fatalError("Cell size have to be implemented.") }
