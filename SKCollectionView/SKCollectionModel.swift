@@ -59,6 +59,11 @@ open class SKCollectionModel: SKCollectionModelProtocol
         self.ownerSKCollectionView?.removeModel(modelToRemove: self)
     }
     
+    open func reloadModel()
+    {
+        self.ownerSKCollectionView?.skReloadModel(model: self)
+    }
+    
     open func cellSize() -> CGSize { fatalError("Cell size have to be implemented.") }
     open func cellType() -> SKCollectionCell.Type { fatalError("Cell type have to be implemented.")  }
 }
