@@ -11,7 +11,7 @@ import UIKit
 @available(iOS 10.0, *)
 extension SKCollectionView
 {
-    open func setRefreshControl(refreshMessage: String, blockRefresh: @escaping () -> Void )
+    open func skSetRefreshControl(refreshMessage: String, blockRefresh: @escaping () -> Void )
     {
         self.refreshControl?.removeFromSuperview()
         self.refreshControl = nil
