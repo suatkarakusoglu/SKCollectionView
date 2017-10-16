@@ -11,14 +11,16 @@ import UIKit
 @available(iOS 10.0, *)
 extension SKCollectionView
 {
-    open func skSetRefreshControl(refreshMessage: String, blockRefresh: @escaping () -> Void )
+    open func skSetRefreshControl(blockRefresh: @escaping () -> Void, refreshMessage: String? = nil)
     {
         self.refreshControl?.removeFromSuperview()
         self.refreshControl = nil
         
         self.blockPullToRefresh = blockRefresh
         let refreshControlForSK = UIRefreshControl()
-        refreshControlForSK.attributedTitle = NSAttributedString(string: refreshMessage)
+        if let refreshMessage = refreshMessage {
+            refreshControlForSK.attributedTitle = NSAttributedString(string: refreshMessage)
+        }
         refreshControlForSK.addTarget(
             self,
             action: #selector(SKCollectionView.refresh),
