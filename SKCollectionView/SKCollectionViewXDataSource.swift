@@ -20,7 +20,7 @@ extension SKCollectionView: UICollectionViewDataSource
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: currentModel.cellTypeIdentifier(), for: indexPath) as? SKCollectionCell
         {
             // Delay it so that constraints are loaded before.
-            let delayApplyMilliSeconds = DispatchTimeInterval.milliseconds(5)
+            let delayApplyMilliSeconds = DispatchTimeInterval.nanoseconds(1)
             let runAfterTime = DispatchTime.now() + delayApplyMilliSeconds
             DispatchQueue.main.asyncAfter(deadline: runAfterTime) {
                 cell.applyModel(kollectionModel: currentModel)
