@@ -45,7 +45,7 @@ open class SKCollectionView: UICollectionView
         }
     }
 
-    public func skSetCollectionDatas(collectionDatas: [SKCollectionData?])
+    public func skSetCollectionDatas(_ collectionDatas: [SKCollectionData?])
     {
         let fullCollectionDatas = collectionDatas.flatMap{ $0 }
         self.collectionDatas = fullCollectionDatas
@@ -58,9 +58,9 @@ open class SKCollectionView: UICollectionView
         return self.collectionDatas[indexPath.section].models[indexPath.row]
     }
     
-    public func skGetCollectionData(dataIdentifier: String) -> SKCollectionData?
+    public func skGetCollectionData(by id: String) -> SKCollectionData?
     {
-        return self.collectionDatas.skFindFirst{ $0.dataIdentifier == dataIdentifier }
+        return self.collectionDatas.skFindFirst{ $0.dataIdentifier == id }
     }
     
     public func skScrollToModel(model: SKCollectionModel)
