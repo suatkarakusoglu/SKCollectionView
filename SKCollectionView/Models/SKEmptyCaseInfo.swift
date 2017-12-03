@@ -6,7 +6,7 @@
 //  Copyright © 2017 suat.karakusoglu. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 open class SKEmptyCaseInfo
 {

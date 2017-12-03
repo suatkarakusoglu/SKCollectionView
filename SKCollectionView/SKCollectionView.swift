@@ -50,6 +50,7 @@ open class SKCollectionView: UICollectionView
     {
         let fullCollectionDatas = collectionDatas.flatMap{ $0 }
         self.collectionDatas = fullCollectionDatas
+        
         if let emptyData = self.prepareEmptyCaseCollectionDataIfRequired(currentDatas: fullCollectionDatas)
         {
             self.collectionDatas = [emptyData]
@@ -62,22 +63,23 @@ open class SKCollectionView: UICollectionView
     private func prepareEmptyCaseCollectionDataIfRequired(currentDatas: [SKCollectionData]) -> SKCollectionData?
     {
         let isDataEmpty = currentDatas.flatMap{ $0.models }.isEmpty
+        let isEmptyCaseExists = self.emptyCaseInfo != nil
+        let shouldFillEmptyCaseData = isDataEmpty && isEmptyCaseExists
+        guard shouldFillEmptyCaseData else { return nil }
         
-        if let emptyCaseInfo = self.emptyCaseInfo, isDataEmpty
-        {
-            let emptyCollectionModel = SKCollectionEmptyCaseCModel(
-                imageIcon: emptyCaseInfo.image,
-                title: emptyCaseInfo.title,
-                subTitle: emptyCaseInfo.subTitle,
-                buttonInfo: emptyCaseInfo.buttonInfo,
-                cellHeight: self.frame.height
-            )
-            
-            emptyCollectionModel.isInsideFramework = true
-            let emptyCollectionData = SKCollectionData(models: [emptyCollectionModel])
-            return emptyCollectionData
-        }
-        return nil
+        let emptyCaseInfo = self.emptyCaseInfo!
+
+        let emptyCollectionModel = SKCollectionEmptyCaseCModel(
+            imageIcon: emptyCaseInfo.image,
+            title: emptyCaseInfo.title,
+            subTitle: emptyCaseInfo.subTitle,
+            height: self.bounds.size.height,
+            buttonInfo: emptyCaseInfo.buttonInfo
+        )
+        
+        emptyCollectionModel.isInsideFramework = true
+        let emptyCollectionData = SKCollectionData(models: [emptyCollectionModel])
+        return emptyCollectionData
     }
 
     public func skGetModelAtIndexPath(indexPath: IndexPath) -> SKCollectionModel

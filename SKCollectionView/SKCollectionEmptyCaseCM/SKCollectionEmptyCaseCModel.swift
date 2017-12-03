@@ -13,20 +13,20 @@ class SKCollectionEmptyCaseCModel: SKCollectionModel
     let imageIcon: UIImage
     let title: NSAttributedString
     let subTitle: NSAttributedString
-    let cellHeight: CGFloat
+    let height: CGFloat
     let buttonInfo: SKButtonInfo?
     
     init(imageIcon: UIImage,
          title: NSAttributedString,
          subTitle: NSAttributedString,
-         buttonInfo: SKButtonInfo?,
-         cellHeight: CGFloat)
+         height: CGFloat,
+         buttonInfo: SKButtonInfo?)
     {
         self.imageIcon = imageIcon
         self.title = title
         self.subTitle = subTitle
+        self.height = height
         self.buttonInfo = buttonInfo
-        self.cellHeight = cellHeight
     }
     
     override func cellType() -> SKCollectionCell.Type
@@ -37,7 +37,7 @@ class SKCollectionEmptyCaseCModel: SKCollectionModel
     override func cellSize() -> CGSize
     {
         let realWidth: CGFloat = UIScreen.main.bounds.size.width
-        let realHeight: CGFloat = self.cellHeight
+        let realHeight: CGFloat = self.height
         return CGSize(width: realWidth, height: realHeight)
     }
 }
