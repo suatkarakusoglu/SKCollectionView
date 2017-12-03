@@ -17,6 +17,9 @@ open class SKCollectionModel: SKCollectionModelProtocol
     open var boundCollectionCell: SKCollectionCell?
     open var shouldBindToCell: Bool = false
     open var selectionBlock: (()->Void)?
+    
+    // This is used for xib loading from bundle.
+    var isInsideFramework: Bool? = false
 
     public init()
     {
@@ -33,12 +36,7 @@ open class SKCollectionModel: SKCollectionModelProtocol
         let cellTypeName = NSStringFromClass(self.cellType())
         return cellTypeName.components(separatedBy: ".").last!
     }
-    
-    final func cellTypeIdentifier() -> String
-    {
-        return self.xibTypeIdentifier() + (self.modelId ?? "")
-    }
-    
+
     open func onCellSelected(selectionBlock: @escaping (()->Void))
     {
         self.selectionBlock = selectionBlock

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SKCollectionEmptyCaseCCell" customModule="SKCollectionView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="533"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="533"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrO-lV-Fg5" userLabel="viewMainContainer">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="533"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="football_icon_64_64" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-hm-bU0" userLabel="imageViewIcon">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="212"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="212" id="aNb-l8-qld"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-ge-Bof" userLabel="labelSubTitle">
+                                <rect key="frame" x="12" y="278.5" width="360" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZJ-Pv-bKz" userLabel="buttonAction">
+                                <rect key="frame" x="12" y="473" width="360" height="48"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="hCO-WO-Ovq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <state key="normal" title="BUTTON"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionEmptyCase:" destination="gTV-IL-0wX" eventType="touchUpInside" id="a9x-K1-ZbL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-hu-uha" userLabel="labelTitle">
+                                <rect key="frame" x="12" y="232" width="360" height="26.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aCj-hu-uha" firstAttribute="leading" secondItem="mrO-lV-Fg5" secondAttribute="leading" constant="12" id="8ik-bv-T5J"/>
+                            <constraint firstItem="aCj-hu-uha" firstAttribute="top" secondItem="Bou-hm-bU0" secondAttribute="bottom" constant="20" id="HfJ-Bx-Kvk"/>
+                            <constraint firstAttribute="trailing" secondItem="aCj-hu-uha" secondAttribute="trailing" constant="12" id="Iut-ub-3t4"/>
+                            <constraint firstAttribute="trailing" secondItem="nZJ-Pv-bKz" secondAttribute="trailing" constant="12" id="L57-Pd-qYN"/>
+                            <constraint firstItem="NhQ-ge-Bof" firstAttribute="top" secondItem="aCj-hu-uha" secondAttribute="bottom" constant="20" id="MKb-8J-NyB"/>
+                            <constraint firstItem="Bou-hm-bU0" firstAttribute="top" secondItem="mrO-lV-Fg5" secondAttribute="top" id="XJ1-lD-40W"/>
+                            <constraint firstAttribute="trailing" secondItem="Bou-hm-bU0" secondAttribute="trailing" id="hIl-1z-kyM"/>
+                            <constraint firstItem="nZJ-Pv-bKz" firstAttribute="leading" secondItem="mrO-lV-Fg5" secondAttribute="leading" constant="12" id="kCX-tP-D68"/>
+                            <constraint firstAttribute="trailing" secondItem="NhQ-ge-Bof" secondAttribute="trailing" constant="12" id="oWg-ap-AVf"/>
+                            <constraint firstItem="NhQ-ge-Bof" firstAttribute="leading" secondItem="mrO-lV-Fg5" secondAttribute="leading" constant="12" id="shx-Fe-bAi"/>
+                            <constraint firstItem="Bou-hm-bU0" firstAttribute="leading" secondItem="mrO-lV-Fg5" secondAttribute="leading" id="vNQ-eB-16a"/>
+                            <constraint firstAttribute="bottom" secondItem="nZJ-Pv-bKz" secondAttribute="bottom" constant="12" id="wdd-Sb-1QF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="mrO-lV-Fg5" secondAttribute="bottom" id="38w-bl-nXY"/>
+                <constraint firstItem="mrO-lV-Fg5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ItM-dh-NNp"/>
+                <constraint firstItem="mrO-lV-Fg5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sXO-V0-OSh"/>
+                <constraint firstAttribute="trailing" secondItem="mrO-lV-Fg5" secondAttribute="trailing" id="tGZ-an-phG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="384" height="533"/>
+            <connections>
+                <outlet property="buttonAction" destination="nZJ-Pv-bKz" id="K6B-Dy-jt7"/>
+                <outlet property="imageViewIcon" destination="Bou-hm-bU0" id="PwY-8X-Fhh"/>
+                <outlet property="labelSubTitle" destination="NhQ-ge-Bof" id="F5k-4I-eM6"/>
+                <outlet property="labelTitle" destination="aCj-hu-uha" id="Yjg-uP-c24"/>
+            </connections>
+            <point key="canvasLocation" x="-19" y="6.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="football_icon_64_64" width="64" height="64"/>
+    </resources>
+</document>

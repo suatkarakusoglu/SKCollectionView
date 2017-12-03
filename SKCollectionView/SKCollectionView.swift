@@ -10,6 +10,7 @@ import UIKit
 
 open class SKCollectionView: UICollectionView
 {
+    public var emptyCaseInfo: SKEmptyCaseInfo?
     open var blockPullToRefresh: (() -> Void)?
     public var collectionDatas: [SKCollectionData] = [SKCollectionData]()
     private var alreadyRegisteredCells: [String] = []
@@ -49,8 +50,34 @@ open class SKCollectionView: UICollectionView
     {
         let fullCollectionDatas = collectionDatas.flatMap{ $0 }
         self.collectionDatas = fullCollectionDatas
+        if let emptyData = self.prepareEmptyCaseCollectionDataIfRequired(currentDatas: fullCollectionDatas)
+        {
+            self.collectionDatas = [emptyData]
+        }
+        
         self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
         self.reloadData()
+    }
+    
+    private func prepareEmptyCaseCollectionDataIfRequired(currentDatas: [SKCollectionData]) -> SKCollectionData?
+    {
+        let isDataEmpty = currentDatas.flatMap{ $0.models }.isEmpty
+        
+        if let emptyCaseInfo = self.emptyCaseInfo, isDataEmpty
+        {
+            let emptyCollectionModel = SKCollectionEmptyCaseCModel(
+                imageIcon: emptyCaseInfo.image,
+                title: emptyCaseInfo.title,
+                subTitle: emptyCaseInfo.subTitle,
+                buttonInfo: emptyCaseInfo.buttonInfo,
+                cellHeight: self.frame.height
+            )
+            
+            emptyCollectionModel.isInsideFramework = true
+            let emptyCollectionData = SKCollectionData(models: [emptyCollectionModel])
+            return emptyCollectionData
+        }
+        return nil
     }
 
     public func skGetModelAtIndexPath(indexPath: IndexPath) -> SKCollectionModel
@@ -199,10 +226,15 @@ extension SKCollectionView
 {
     private func skRegisterCellFor(modelToRegister: SKCollectionModel)
     {
-        self.skRegisterCellWithIdentifier(
-            nibIdentifier: modelToRegister.xibTypeIdentifier(),
-            cellReuseIdentifier: modelToRegister.cellTypeIdentifier()
-        )
+        let nibIdentifier = modelToRegister.xibTypeIdentifier()
+
+        let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == nibIdentifier }
+        guard !isAlreadyRegistered else { return }
+        
+        let bundleToLoadFrom = (modelToRegister.isInsideFramework ?? false) ? Bundle(for: SKCollectionView.self) : Bundle.main
+        let nibCell = UINib(nibName: nibIdentifier, bundle: bundleToLoadFrom)
+        self.register(nibCell, forCellWithReuseIdentifier: nibIdentifier)
+        self.alreadyRegisteredCells.append(nibIdentifier)
     }
     
     private func skRegisterReusableModel(reusableModel: SKCollectionReusableModel?, viewKind: String)
@@ -221,17 +253,6 @@ extension SKCollectionView
         collectionDataToRegister.models.forEach { self.skRegisterCellFor(modelToRegister: $0) }
         self.skRegisterReusableModel(reusableModel: collectionDataToRegister.headerModel, viewKind: UICollectionElementKindSectionHeader)
         self.skRegisterReusableModel(reusableModel: collectionDataToRegister.footerModel, viewKind: UICollectionElementKindSectionFooter)
-    }
-    
-    private func skRegisterCellWithIdentifier(nibIdentifier: String, cellReuseIdentifier: String? = nil)
-    {
-        let cellIdentifier = cellReuseIdentifier ?? nibIdentifier
-        let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == nibIdentifier }
-        guard !isAlreadyRegistered else { return }
-
-        let nibCell = UINib(nibName: nibIdentifier, bundle: Bundle.main)
-        self.register(nibCell, forCellWithReuseIdentifier: cellIdentifier)
-        self.alreadyRegisteredCells.append(nibIdentifier)
     }
 }
 

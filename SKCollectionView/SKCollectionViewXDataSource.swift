@@ -17,7 +17,7 @@ extension SKCollectionView: UICollectionViewDataSource
             return boundCollectionCell
         }
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: currentModel.cellTypeIdentifier(), for: indexPath) as? SKCollectionCell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: currentModel.xibTypeIdentifier(), for: indexPath) as? SKCollectionCell
         {
             // Delay it so that constraints are loaded before.
             let delayApplyMilliSeconds = DispatchTimeInterval.nanoseconds(1)
