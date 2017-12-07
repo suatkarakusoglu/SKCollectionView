@@ -62,23 +62,27 @@ open class SKCollectionView: UICollectionView
     
     private func prepareEmptyCaseCollectionDataIfRequired(currentDatas: [SKCollectionData]) -> SKCollectionData?
     {
-        let isDataEmpty = currentDatas.flatMap{ $0.models }.isEmpty
+        let isDataEmpty = currentDatas.first?.models.isEmpty ?? true
         let isEmptyCaseExists = self.emptyCaseInfo != nil
         let shouldFillEmptyCaseData = isDataEmpty && isEmptyCaseExists
         guard shouldFillEmptyCaseData else { return nil }
         
         let emptyCaseInfo = self.emptyCaseInfo!
-
+        
+        let collectionHeight = self.bounds.size.height
+        let headerModelHeight = currentDatas.first?.headerModel?.viewSize().height ?? 0
+        let emptyModelHeight = collectionHeight - headerModelHeight
+        
         let emptyCollectionModel = SKCollectionEmptyCaseCModel(
             imageIcon: emptyCaseInfo.image,
             title: emptyCaseInfo.title,
             subTitle: emptyCaseInfo.subTitle,
-            height: self.bounds.size.height,
+            height: emptyModelHeight,
             buttonInfo: emptyCaseInfo.buttonInfo
         )
         
         emptyCollectionModel.isInsideFramework = true
-        let emptyCollectionData = SKCollectionData(models: [emptyCollectionModel])
+        let emptyCollectionData = SKCollectionData(models: [emptyCollectionModel], headerModel: currentDatas.first?.headerModel, footerModel: currentDatas.first?.footerModel)
         return emptyCollectionData
     }
 
@@ -142,6 +146,16 @@ extension SKCollectionView
         self.collectionDatas[indexPathToRemove.section].models.remove(at: indexPathToRemove.row)
         let indexPathsToRemove = [indexPathToRemove]
         self.deleteItems(at: indexPathsToRemove)
+        
+        let isEmptyCaseModel = modelToRemove is SKCollectionEmptyCaseCModel
+        if !isEmptyCaseModel
+        {
+            if let emptyData = self.prepareEmptyCaseCollectionDataIfRequired(currentDatas: self.collectionDatas)
+            {
+                self.collectionDatas = [emptyData]
+                self.reloadData()
+            }
+        }
     }
 }
 
@@ -207,6 +221,11 @@ extension SKCollectionView
     
     public func skInsertModelAtTail(model: SKCollectionModel, scrollToIt: Bool = false)
     {
+        // Remove if empty case was staying
+        if let emptyModel = self.collectionDatas.first?.models.first as? SKCollectionEmptyCaseCModel {
+            emptyModel.removeFromCollection()
+        }
+        
         self.skRegisterCellFor(modelToRegister: model)
         let lastSectionIndex = self.collectionDatas.count - 1
         self.collectionDatas[lastSectionIndex].models.append(model)

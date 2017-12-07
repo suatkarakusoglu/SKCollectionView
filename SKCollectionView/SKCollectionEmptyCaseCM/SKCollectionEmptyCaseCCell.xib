@@ -29,27 +29,30 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrO-lV-Fg5" userLabel="viewMainContainer">
-                        <rect key="frame" x="0.0" y="106.5" width="384" height="320"/>
+                        <rect key="frame" x="0.0" y="126.5" width="384" height="280"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="football_icon_64_64" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-hm-bU0" userLabel="imageViewIcon">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-hm-bU0" userLabel="imageViewIcon">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="aNb-l8-qld"/>
+                                    <constraint firstAttribute="height" constant="160" id="aNb-l8-qld"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-ge-Bof" userLabel="labelSubTitle">
-                                <rect key="frame" x="12" y="240" width="360" height="0.0"/>
+                                <rect key="frame" x="12" y="200" width="360" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZJ-Pv-bKz" userLabel="buttonAction">
-                                <rect key="frame" x="12" y="260" width="360" height="48"/>
+                                <rect key="frame" x="12" y="220" width="360" height="48"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="hCO-WO-Ovq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.0029606991450000001" green="0.47936528919999999" blue="0.57619613410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="0.0"/>
@@ -60,7 +63,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-hu-uha" userLabel="labelTitle">
-                                <rect key="frame" x="12" y="220" width="360" height="0.0"/>
+                                <rect key="frame" x="12" y="180" width="360" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -103,7 +106,4 @@
             <point key="canvasLocation" x="-19" y="6.5"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="football_icon_64_64" width="64" height="64"/>
-    </resources>
 </document>
