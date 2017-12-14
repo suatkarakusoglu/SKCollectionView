@@ -44,6 +44,8 @@ open class SKCollectionView: UICollectionView
         } else {
             debugPrint("Can not pin the header-footer views under iOS 9.")
         }
+        
+        self.skRegisterCellFor(identifer: "SKCollectionEmptyCaseCCell", isInsideFramework: true)
     }
 
     public func skSetCollectionDatas(_ collectionDatas: [SKCollectionData?])
@@ -82,7 +84,13 @@ open class SKCollectionView: UICollectionView
         )
         
         emptyCollectionModel.isInsideFramework = true
-        let emptyCollectionData = SKCollectionData(models: [emptyCollectionModel], headerModel: currentDatas.first?.headerModel, footerModel: currentDatas.first?.footerModel)
+        
+        let emptyCollectionData = SKCollectionData(
+            models: [emptyCollectionModel],
+            headerModel: currentDatas.first?.headerModel,
+            footerModel: currentDatas.first?.footerModel
+        )
+        
         return emptyCollectionData
     }
 
@@ -245,17 +253,22 @@ extension SKCollectionView
 // MARK: Registrations
 extension SKCollectionView
 {
+    private func skRegisterCellFor(identifer: String, isInsideFramework: Bool = false)
+    {
+        let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == identifer }
+        guard !isAlreadyRegistered else { return }
+        
+        let bundleToLoadFrom = isInsideFramework ? Bundle(for: SKCollectionView.self) : Bundle.main
+        let nibCell = UINib(nibName: identifer, bundle: bundleToLoadFrom)
+        self.register(nibCell, forCellWithReuseIdentifier: identifer)
+        self.alreadyRegisteredCells.append(identifer)
+    }
+    
     private func skRegisterCellFor(modelToRegister: SKCollectionModel)
     {
         let nibIdentifier = modelToRegister.xibTypeIdentifier()
-
-        let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == nibIdentifier }
-        guard !isAlreadyRegistered else { return }
-        
-        let bundleToLoadFrom = (modelToRegister.isInsideFramework ?? false) ? Bundle(for: SKCollectionView.self) : Bundle.main
-        let nibCell = UINib(nibName: nibIdentifier, bundle: bundleToLoadFrom)
-        self.register(nibCell, forCellWithReuseIdentifier: nibIdentifier)
-        self.alreadyRegisteredCells.append(nibIdentifier)
+        let isInsideFramework = modelToRegister.isInsideFramework ?? false
+        self.skRegisterCellFor(identifer: nibIdentifier, isInsideFramework: isInsideFramework)
     }
     
     private func skRegisterReusableModel(reusableModel: SKCollectionReusableModel?, viewKind: String)
