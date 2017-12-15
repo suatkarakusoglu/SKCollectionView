@@ -5,6 +5,7 @@
 //  Created by suat.karakusoglu on 11.09.17.
 //  Copyright © 2017 suat.karakusoglu. All rights reserved.
 //
+import UIKit
 
 extension SKCollectionView: UICollectionViewDelegate
 {
@@ -52,7 +53,8 @@ extension SKCollectionView: UICollectionViewDelegate
     
     func prepareEndReachedModel(loadingImage: UIImage? = nil) -> SKEndlessCModel
     {
-        let defaultLoadingImage = #imageLiteral(resourceName: "icon_loading")
+        let defaultLoadingImage = UIImage(named: "icon_loading", in: Bundle(for: SKCollectionView.self), compatibleWith: nil)!
+
         let imageToShowWhileLoading = loadingImage ?? defaultLoadingImage
         let imageWidth = imageToShowWhileLoading.size.width
         let imageHeight = imageToShowWhileLoading.size.height
