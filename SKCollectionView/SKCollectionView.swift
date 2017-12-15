@@ -109,10 +109,10 @@ open class SKCollectionView: UICollectionView
         return self.collectionDatas.skFindFirst{ $0.dataIdentifier == id }
     }
     
-    public func skScrollToModel(model: SKCollectionModel)
+    public func skScrollToModel(model: SKCollectionModel, scrollPosition: UICollectionViewScrollPosition? = nil)
     {
         guard let indexPathForModelToScroll = self.skGetIndexPathOfModel(collectionModelToFindIndex: model) else { return }
-        self.skScrollToItem(at: indexPathForModelToScroll)
+        self.skScrollToItem(at: indexPathForModelToScroll, scrollPosition: scrollPosition)
     }
 
     public func skReloadModel(model: SKCollectionModel)
@@ -140,13 +140,11 @@ open class SKCollectionView: UICollectionView
         return self.collectionViewLayout as! UICollectionViewFlowLayout
     }
 
-    private func skScrollToItem(at indexPath: IndexPath)
+    private func skScrollToItem(at indexPath: IndexPath, scrollPosition: UICollectionViewScrollPosition? = nil)
     {
-        if self.skGetLayout().scrollDirection == .vertical {
-            self.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.bottom, animated: true)
-        }else {
-            self.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.right, animated: true)
-        }
+        let defaultScrollPosition: UICollectionViewScrollPosition = self.skGetLayout().scrollDirection == .vertical ? .bottom : .right
+        let positionToScroll = scrollPosition ?? defaultScrollPosition
+        self.scrollToItem(at: indexPath, at: positionToScroll, animated: true)
     }
 }
 
