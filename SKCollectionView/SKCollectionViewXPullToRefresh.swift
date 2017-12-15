@@ -8,32 +8,43 @@
 
 import UIKit
 
-@available(iOS 10.0, *)
 extension SKCollectionView
 {
     open func skSetRefreshControl(blockRefresh: @escaping () -> Void, refreshMessage: String? = nil)
     {
-        self.refreshControl?.removeFromSuperview()
-        self.refreshControl = nil
-        
         self.blockPullToRefresh = blockRefresh
         let refreshControlForSK = UIRefreshControl()
+        
         if let refreshMessage = refreshMessage {
             refreshControlForSK.attributedTitle = NSAttributedString(string: refreshMessage)
         }
+        
         refreshControlForSK.addTarget(
             self,
             action: #selector(SKCollectionView.refresh),
             for: UIControlEvents.valueChanged
         )
         
-        self.refreshControl = refreshControlForSK
-        self.addSubview(self.refreshControl!)
+        if #available(iOS 10.0, *) {
+            self.refreshControl?.removeFromSuperview()
+            self.refreshControl = nil
+            self.refreshControl = refreshControlForSK
+        } else {
+            self.refreshControlForLowerThaniOS10 = refreshControlForSK
+            self.addSubview(refreshControlForSK)
+        }
     }
     
     @objc func refresh()
     {
         self.blockPullToRefresh?()
-        self.refreshControl?.endRefreshing()
+        if #available(iOS 10.0, *)
+        {
+            self.refreshControl?.endRefreshing()
+        }
+        else
+        {
+            self.refreshControlForLowerThaniOS10?.removeFromSuperview()
+        }
     }
 }

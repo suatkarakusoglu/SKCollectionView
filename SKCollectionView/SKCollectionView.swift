@@ -12,6 +12,9 @@ open class SKCollectionView: UICollectionView
 {
     public var emptyCaseInfo: SKEmptyCaseInfo?
     open var blockPullToRefresh: (() -> Void)?
+    
+    public var refreshControlForLowerThaniOS10: UIRefreshControl?
+    
     public var collectionDatas: [SKCollectionData] = [SKCollectionData]()
     private var alreadyRegisteredCells: [String] = []
     
