@@ -9,7 +9,8 @@ import UIKit
 
 extension SKCollectionView: UICollectionViewDelegate
 {
-    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
         let selectedModel = self.skGetModelAtIndexPath(indexPath: indexPath)
         selectedModel.cellSelected()
     }
@@ -44,6 +45,7 @@ extension SKCollectionView: UICollectionViewDelegate
             if isEndReachedModelRendering {
                 return
             }
+            
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
                 self.skInsertModelAtTail(model: endReachedModel, scrollToIt: true)
                 self.endReachedBlock?()

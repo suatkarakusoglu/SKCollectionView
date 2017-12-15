@@ -15,8 +15,7 @@ open class SKCollectionData
     
     public init(models: [SKCollectionModel],
          headerModel: SKCollectionReusableModel? = nil,
-         footerModel: SKCollectionReusableModel? = nil
-        )
+         footerModel: SKCollectionReusableModel? = nil)
     {
         self.models = models
         self.headerModel = headerModel
