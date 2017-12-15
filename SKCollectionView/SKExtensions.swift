@@ -8,6 +8,20 @@
 
 import UIKit
 
+extension Bundle
+{
+    static func skFrameworkBundle() -> Bundle
+    {
+        let bundle = Bundle(for: SKCollectionView.self)
+        if let path = bundle.path(forResource: "SKCollectionView", ofType: "bundle") {
+            return Bundle(path: path)!
+        }
+        else {
+            return bundle
+        }
+    }
+}
+
 extension Sequence
 {
     public func skFindFirst(predicate: (Element) -> Bool) -> Element?

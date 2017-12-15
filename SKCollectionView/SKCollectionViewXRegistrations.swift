@@ -13,7 +13,7 @@ extension SKCollectionView
         let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == identifer }
         guard !isAlreadyRegistered else { return }
         
-        let bundleToLoadFrom = isInsideFramework ? Bundle(for: SKCollectionView.self) : Bundle.main
+        let bundleToLoadFrom = isInsideFramework ? Bundle.skFrameworkBundle() : Bundle.main
         let nibCell = UINib(nibName: identifer, bundle: bundleToLoadFrom)
         self.register(nibCell, forCellWithReuseIdentifier: identifer)
         self.alreadyRegisteredCells.append(identifer)

@@ -53,7 +53,7 @@ extension SKCollectionView: UICollectionViewDelegate
     
     func prepareEndReachedModel(loadingImage: UIImage? = nil) -> SKEndlessCModel
     {
-        let defaultLoadingImage = UIImage(named: "icon_loading", in: Bundle(for: SKCollectionView.self), compatibleWith: nil)!
+        let defaultLoadingImage =  UIImage(named: "icon_loading", in: Bundle.skFrameworkBundle(), compatibleWith: nil)!
 
         let imageToShowWhileLoading = loadingImage ?? defaultLoadingImage
         let imageWidth = imageToShowWhileLoading.size.width
