@@ -16,11 +16,13 @@ open class SKCollectionView: UICollectionView
     public var refreshControlForLowerThaniOS10: UIRefreshControl?
     
     public var collectionDatas: [SKCollectionData] = [SKCollectionData]()
-    private var alreadyRegisteredCells: [String] = []
+    var alreadyRegisteredCells: [String] = []
     
     public var endReachedModel: SKCollectionModel?
     public var endReachedBlock: (() -> Void)?
     public var endHasNoItemLeft: Bool = false
+    
+    public var blockScrollViewDidScroll: (() -> Void)?
 
     required public init?(coder aDecoder: NSCoder)
     {
@@ -250,46 +252,6 @@ extension SKCollectionView
     public func skInsertModelsAtTail(models: [SKCollectionModel], scrollToIt: Bool = false)
     {
         models.forEach{ self.skInsertModelAtTail(model: $0, scrollToIt: scrollToIt) }
-    }
-}
-
-// MARK: Registrations
-extension SKCollectionView
-{
-    private func skRegisterCellFor(identifer: String, isInsideFramework: Bool = false)
-    {
-        let isAlreadyRegistered = self.alreadyRegisteredCells.contains{ $0 == identifer }
-        guard !isAlreadyRegistered else { return }
-        
-        let bundleToLoadFrom = isInsideFramework ? Bundle(for: SKCollectionView.self) : Bundle.main
-        let nibCell = UINib(nibName: identifer, bundle: bundleToLoadFrom)
-        self.register(nibCell, forCellWithReuseIdentifier: identifer)
-        self.alreadyRegisteredCells.append(identifer)
-    }
-    
-    private func skRegisterCellFor(modelToRegister: SKCollectionModel)
-    {
-        let nibIdentifier = modelToRegister.xibTypeIdentifier()
-        let isInsideFramework = modelToRegister.isInsideFramework ?? false
-        self.skRegisterCellFor(identifer: nibIdentifier, isInsideFramework: isInsideFramework)
-    }
-    
-    private func skRegisterReusableModel(reusableModel: SKCollectionReusableModel?, viewKind: String)
-    {
-        guard let reusableModel = reusableModel else { return }
-        let supplementaryNib = UINib(nibName: reusableModel.viewTypeIdentifier(), bundle: nil)
-        self.register(
-            supplementaryNib,
-            forSupplementaryViewOfKind: viewKind,
-            withReuseIdentifier: reusableModel.viewTypeIdentifier()
-        )
-    }
-    
-    private func skRegisterCollectionData(collectionDataToRegister: SKCollectionData)
-    {
-        collectionDataToRegister.models.forEach { self.skRegisterCellFor(modelToRegister: $0) }
-        self.skRegisterReusableModel(reusableModel: collectionDataToRegister.headerModel, viewKind: UICollectionElementKindSectionHeader)
-        self.skRegisterReusableModel(reusableModel: collectionDataToRegister.footerModel, viewKind: UICollectionElementKindSectionFooter)
     }
 }
 

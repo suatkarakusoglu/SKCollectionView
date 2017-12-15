@@ -6,8 +6,6 @@
 //  Copyright © 2017 suat.karakusoglu. All rights reserved.
 //
 
-import UIKit
-
 extension SKCollectionView: UICollectionViewDelegate
 {
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -27,7 +25,7 @@ extension SKCollectionView: UICollectionViewDelegate
         guard let lastIndexRow = self.collectionDatas.last?.models.count else { return }
         
         let isScrollExists = { () -> Bool in
-            if self.skGetLayout().scrollDirection == .vertical {
+            if self.isScrollingVertically() {
                 return self.contentSize.height >= self.frame.size.height
             }else {
                 return self.contentSize.width >= self.frame.size.width
@@ -52,9 +50,33 @@ extension SKCollectionView: UICollectionViewDelegate
         }
     }
     
-    public func skEndlessConfig(endReachedModel: SKCollectionModel, endReachedBlock: @escaping (() -> Void))
+    func prepareEndReachedModel(loadingImage: UIImage? = nil) -> SKEndlessCModel
     {
-        self.endReachedModel = endReachedModel
+        let defaultLoadingImage = #imageLiteral(resourceName: "icon_loading")
+        let imageToShowWhileLoading = loadingImage ?? defaultLoadingImage
+        let imageWidth = imageToShowWhileLoading.size.width
+        let imageHeight = imageToShowWhileLoading.size.height
+        
+        let heightPadding: CGFloat = 40
+        let cellHeight = imageHeight + heightPadding
+        let cellWidth = self.isScrollingVertically() ? UIScreen.main.bounds.size.width : imageWidth
+        
+        let cellSize = CGSize(width: cellWidth, height: cellHeight)
+        
+        let endReachedModel = SKEndlessCModel(loadingSize: cellSize, loadingImage: imageToShowWhileLoading)
+        endReachedModel.isInsideFramework = true
+        return endReachedModel
+    }
+
+    public func skEndReached(loadingImage: UIImage? = nil, endReachedBlock: @escaping (() -> Void))
+    {
+        let modelForEndReached = self.prepareEndReachedModel(loadingImage: loadingImage)
+        self.skEndReached(model: modelForEndReached, endReachedBlock: endReachedBlock)
+    }
+    
+    public func skEndReached(model: SKCollectionModel, endReachedBlock: @escaping (() -> Void))
+    {
+        self.endReachedModel = model
         self.endReachedBlock = endReachedBlock
     }
     
@@ -65,5 +87,15 @@ extension SKCollectionView: UICollectionViewDelegate
         {
             self.removeModel(modelToRemove: endReachedModel)
         }
+    }
+    
+    func isScrollingHorizontally() -> Bool
+    {
+        return self.skGetLayout().scrollDirection == .horizontal
+    }
+    
+    func isScrollingVertically() -> Bool
+    {
+        return self.skGetLayout().scrollDirection == .vertical
     }
 }

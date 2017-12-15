@@ -8,7 +8,6 @@
 
 import UIKit
 
-// MARK: UICollectionViewDelegateFlowLayout
 extension SKCollectionView: UICollectionViewDelegateFlowLayout
 {
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -13,6 +13,12 @@
 		4919888E1FD43A810077D130 /* SKCollectionEmptyCaseCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4919888D1FD43A810077D130 /* SKCollectionEmptyCaseCModel.swift */; };
 		491988911FD469990077D130 /* SKButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491988901FD469990077D130 /* SKButtonInfo.swift */; };
 		491988931FD469C20077D130 /* SKEmptyCaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491988921FD469C20077D130 /* SKEmptyCaseInfo.swift */; };
+		49CC3F481FE3BE6D009F2505 /* SKEndlessCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC3F461FE3BE6D009F2505 /* SKEndlessCCell.swift */; };
+		49CC3F491FE3BE6D009F2505 /* SKEndlessCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CC3F471FE3BE6D009F2505 /* SKEndlessCCell.xib */; };
+		49CC3F4B1FE3BE8D009F2505 /* SKEndlessCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC3F4A1FE3BE8D009F2505 /* SKEndlessCModel.swift */; };
+		49CC3F4D1FE3C02D009F2505 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CC3F4C1FE3C02D009F2505 /* Assets.xcassets */; };
+		49CC3F521FE3E98E009F2505 /* SKCollectionViewXScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC3F511FE3E98E009F2505 /* SKCollectionViewXScrollView.swift */; };
+		49CC3F541FE3EA0A009F2505 /* SKCollectionViewXRegistrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC3F531FE3EA0A009F2505 /* SKCollectionViewXRegistrations.swift */; };
 		E2011D1E1F6678B30062168F /* SKCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2011D141F6678B30062168F /* SKCollectionView.framework */; };
 		E2011D231F6678B30062168F /* SKCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2011D221F6678B30062168F /* SKCollectionViewTests.swift */; };
 		E2011D251F6678B30062168F /* SKCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = E2011D171F6678B30062168F /* SKCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,6 +53,12 @@
 		4919888D1FD43A810077D130 /* SKCollectionEmptyCaseCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionEmptyCaseCModel.swift; sourceTree = "<group>"; };
 		491988901FD469990077D130 /* SKButtonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButtonInfo.swift; sourceTree = "<group>"; };
 		491988921FD469C20077D130 /* SKEmptyCaseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEmptyCaseInfo.swift; sourceTree = "<group>"; };
+		49CC3F461FE3BE6D009F2505 /* SKEndlessCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEndlessCCell.swift; sourceTree = "<group>"; };
+		49CC3F471FE3BE6D009F2505 /* SKEndlessCCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKEndlessCCell.xib; sourceTree = "<group>"; };
+		49CC3F4A1FE3BE8D009F2505 /* SKEndlessCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEndlessCModel.swift; sourceTree = "<group>"; };
+		49CC3F4C1FE3C02D009F2505 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49CC3F511FE3E98E009F2505 /* SKCollectionViewXScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXScrollView.swift; sourceTree = "<group>"; };
+		49CC3F531FE3EA0A009F2505 /* SKCollectionViewXRegistrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCollectionViewXRegistrations.swift; sourceTree = "<group>"; };
 		E2011D141F6678B30062168F /* SKCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2011D171F6678B30062168F /* SKCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKCollectionView.h; sourceTree = "<group>"; };
 		E2011D181F6678B30062168F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,10 +111,22 @@
 		4919888F1FD469840077D130 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				491988881FD43A230077D130 /* SKCollectionEmptyCaseCM */,
+				49CC3F451FE3BDFD009F2505 /* SKEndlessCM */,
 				491988901FD469990077D130 /* SKButtonInfo.swift */,
 				491988921FD469C20077D130 /* SKEmptyCaseInfo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		49CC3F451FE3BDFD009F2505 /* SKEndlessCM */ = {
+			isa = PBXGroup;
+			children = (
+				49CC3F461FE3BE6D009F2505 /* SKEndlessCCell.swift */,
+				49CC3F471FE3BE6D009F2505 /* SKEndlessCCell.xib */,
+				49CC3F4A1FE3BE8D009F2505 /* SKEndlessCModel.swift */,
+			);
+			path = SKEndlessCM;
 			sourceTree = "<group>";
 		};
 		E2011D0A1F6678B30062168F = {
@@ -126,8 +150,8 @@
 		E2011D161F6678B30062168F /* SKCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				49CC3F4C1FE3C02D009F2505 /* Assets.xcassets */,
 				4919888F1FD469840077D130 /* Models */,
-				491988881FD43A230077D130 /* SKCollectionEmptyCaseCM */,
 				E2011D351F6679540062168F /* SKCollectionCell.swift */,
 				E2011D2F1F6679540062168F /* SKCollectionData.swift */,
 				E2011D321F6679540062168F /* SKCollectionModel.swift */,
@@ -140,6 +164,8 @@
 				E2011D381F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift */,
 				E2011D2E1F6679540062168F /* SKCollectionViewXPullToRefresh.swift */,
 				491988861FD4392D0077D130 /* SKCollectionViewXEmptyCase.swift */,
+				49CC3F511FE3E98E009F2505 /* SKCollectionViewXScrollView.swift */,
+				49CC3F531FE3EA0A009F2505 /* SKCollectionViewXRegistrations.swift */,
 				E2011D441F6679D90062168F /* SKExtensions.swift */,
 				E2011D171F6678B30062168F /* SKCollectionView.h */,
 				E2011D181F6678B30062168F /* Info.plist */,
@@ -250,6 +276,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CC3F491FE3BE6D009F2505 /* SKEndlessCCell.xib in Resources */,
+				49CC3F4D1FE3C02D009F2505 /* Assets.xcassets in Resources */,
 				4919888C1FD43A6D0077D130 /* SKCollectionEmptyCaseCCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4919888B1FD43A6D0077D130 /* SKCollectionEmptyCaseCCell.swift in Sources */,
+				49CC3F4B1FE3BE8D009F2505 /* SKEndlessCModel.swift in Sources */,
 				E2011D421F6679550062168F /* SKCollectionViewXDataSource.swift in Sources */,
 				4919888E1FD43A810077D130 /* SKCollectionEmptyCaseCModel.swift in Sources */,
 				491988911FD469990077D130 /* SKButtonInfo.swift in Sources */,
@@ -276,10 +305,13 @@
 				E2011D3E1F6679550062168F /* SKCollectionViewXDelegate.swift in Sources */,
 				E2011D391F6679550062168F /* SKCollectionViewXPullToRefresh.swift in Sources */,
 				491988931FD469C20077D130 /* SKEmptyCaseInfo.swift in Sources */,
+				49CC3F521FE3E98E009F2505 /* SKCollectionViewXScrollView.swift in Sources */,
 				E2011D401F6679550062168F /* SKCollectionCell.swift in Sources */,
 				E2011D431F6679550062168F /* SKCollectionViewXDelegateFlowLayout.swift in Sources */,
+				49CC3F541FE3EA0A009F2505 /* SKCollectionViewXRegistrations.swift in Sources */,
 				E2011D3B1F6679550062168F /* SKCollectionView.swift in Sources */,
 				491988871FD4392D0077D130 /* SKCollectionViewXEmptyCase.swift in Sources */,
+				49CC3F481FE3BE6D009F2505 /* SKEndlessCCell.swift in Sources */,
 				E2011D3A1F6679550062168F /* SKCollectionData.swift in Sources */,
 				E2011D3D1F6679550062168F /* SKCollectionModel.swift in Sources */,
 				E2011D3C1F6679550062168F /* SKCollectionModelProtocol.swift in Sources */,
