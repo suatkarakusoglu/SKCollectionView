@@ -69,9 +69,10 @@ extension SKCollectionView
     
     public func skInsertModelAtTail(model: SKCollectionModel, scrollToIt: Bool = false)
     {
-        // Remove if empty case was staying
-        if let emptyModel = self.collectionDatas.first?.models.first as? SKCollectionEmptyCaseCModel {
-            emptyModel.removeFromCollection()
+        if let emptyModel = self.collectionDatas.first?.models.first as? SKCollectionEmptyCaseCModel
+        {
+            self.collectionDatas[0].models.remove(at: 0)
+            self.deleteItems(at: [IndexPath(row:0, section: 0)])
         }
         
         self.skRegisterCellFor(modelToRegister: model)
@@ -79,6 +80,7 @@ extension SKCollectionView
         self.collectionDatas[lastSectionIndex].models.append(model)
         let lastIndexPath = IndexPath(row: self.collectionDatas[lastSectionIndex].models.count - 1, section: lastSectionIndex)
         self.insertItems(at: [lastIndexPath])
+        
         if scrollToIt {
             self.skScrollToItem(at: lastIndexPath)
         }
