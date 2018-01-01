@@ -12,6 +12,9 @@ open class SKCollectionReusableModel
     open var shouldBindToView: Bool = false
     open var boundView: SKCollectionReusableView?
     
+    open var selectionBlock: (()->Void)?
+    open var viewSelectedGestureRecognizer: UITapGestureRecognizer?
+    
     public init() {}
     
     open func viewSize() -> CGSize
@@ -24,8 +27,9 @@ open class SKCollectionReusableModel
         fatalError("View type have to be implemented")
     }
     
-    open func viewSelected() {
-        
+    open func onViewSelected(selectionBlock: @escaping (()->Void))
+    {
+        self.selectionBlock = selectionBlock
     }
     
     open func refreshBoundView()

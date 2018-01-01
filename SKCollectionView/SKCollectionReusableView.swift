@@ -15,6 +15,27 @@ open class SKCollectionReusableView: UICollectionReusableView
     open func applyReusableModel(reusableModel: SKCollectionReusableModel)
     {
         self.reusableModel = reusableModel
+        
+        let isViewSelectable = reusableModel.selectionBlock != nil
+        let isSelectableGestureNotAdded = reusableModel.viewSelectedGestureRecognizer == nil
+        let shouldAddTapGesture = isViewSelectable && isSelectableGestureNotAdded
+        
+        if shouldAddTapGesture
+        {
+            guard reusableModel.viewSelectedGestureRecognizer == nil else { return }
+            
+            let viewTapGesture = UITapGestureRecognizer(
+                target: self,
+                action: #selector(SKCollectionReusableView.viewSelected(sender:))
+            )
+            
+            self.addGestureRecognizer(viewTapGesture)
+        }
+    }
+    
+    @objc open func viewSelected(sender: UITapGestureRecognizer)
+    {
+        self.getReusableModel().selectionBlock?()
     }
     
     open func getReusableModel<T: SKCollectionReusableModel>() -> T
