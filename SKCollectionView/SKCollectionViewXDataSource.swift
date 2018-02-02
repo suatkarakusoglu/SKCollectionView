@@ -51,17 +51,11 @@ extension SKCollectionView: UICollectionViewDataSource
         }()
         
         guard let currentReusableModel = activeReusableModel else { return UICollectionReusableView() }
-        
-        if let boundView = currentReusableModel.boundView
-        {
-            return boundView
-        }
-        
+
         if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: currentReusableModel.viewTypeIdentifier(), for: indexPath) as? SKCollectionReusableView {
             supplementaryView.applyReusableModel(reusableModel: currentReusableModel)
-            if currentReusableModel.shouldBindToView {
-                currentReusableModel.boundView = supplementaryView
-            }
+            currentReusableModel.boundView = supplementaryView
+            
             return supplementaryView
         }
     

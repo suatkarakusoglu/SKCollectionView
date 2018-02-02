@@ -9,8 +9,7 @@ import UIKit
 
 open class SKCollectionReusableModel
 {
-    open var shouldBindToView: Bool = false
-    open var boundView: SKCollectionReusableView?
+    open weak var boundView: SKCollectionReusableView?
     
     open var selectionBlock: (()->Void)?
     open var viewSelectedGestureRecognizer: UITapGestureRecognizer?
