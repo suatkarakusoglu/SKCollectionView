@@ -12,10 +12,8 @@ import UIKit
 
 open class SKCollectionModel: SKCollectionModelProtocol
 {
-    open var ownerSKCollectionView: SKCollectionView?
-    open var modelId: String?
-    open var boundCollectionCell: SKCollectionCell?
-    open var shouldBindToCell: Bool = false
+    open weak var ownerSKCollectionView: SKCollectionView?
+    open weak var boundCollectionCell: SKCollectionCell?
     open var selectionBlock: (()->Void)?
     
     // This is used for xib loading from bundle.
@@ -23,12 +21,6 @@ open class SKCollectionModel: SKCollectionModelProtocol
 
     public init()
     {
-    }
-    
-    open func bindToCell(withId: String = String.skRandomString(length: 16))
-    {
-        self.shouldBindToCell = true
-        self.modelId = withId
     }
     
     final func xibTypeIdentifier() -> String
@@ -45,11 +37,6 @@ open class SKCollectionModel: SKCollectionModelProtocol
     func cellSelected()
     {
         self.selectionBlock?()
-    }
-    
-    open func refreshBoundCell()
-    {
-        self.boundCollectionCell?.applyModel(kollectionModel: self)
     }
     
     open func removeFromCollection()
