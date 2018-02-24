@@ -10,7 +10,7 @@ import UIKit
 
 extension SKCollectionView
 {
-    open func skSetRefreshControl(blockRefresh: @escaping () -> Void, refreshMessage: String? = nil)
+    open func skSetRefreshControl(refreshMessage: String? = nil, _ blockRefresh: @escaping () -> Void)
     {
         self.blockPullToRefresh = blockRefresh
         let refreshControlForSK = UIRefreshControl()
