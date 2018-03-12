@@ -23,6 +23,8 @@ open class SKCollectionView: UICollectionView
     public var endHasNoItemLeft: Bool = false
     
     public var blockScrollViewDidScroll: (() -> Void)?
+    public var blockScrollViewDidEndDecelerating: (() -> Void)?
+    public var blockOnPageChanged: ((_ page: Int) -> Void)?
 
     required public init?(coder aDecoder: NSCoder)
     {

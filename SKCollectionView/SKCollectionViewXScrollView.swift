@@ -10,7 +10,7 @@ import Foundation
 
 extension SKCollectionView
 {
-    public func onScrollViewDidScroll(_ block: @escaping () -> Void)
+    public func skOnScrollViewDidScroll(_ block: @escaping () -> Void)
     {
         self.blockScrollViewDidScroll = block
     }
@@ -18,5 +18,33 @@ extension SKCollectionView
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         self.blockScrollViewDidScroll?()
+    }
+    
+    public func skOnScrollViewDidEndDecelerating(_ block: @escaping () -> Void)
+    {
+        self.blockScrollViewDidEndDecelerating = block
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
+        if self.isPagingEnabled
+        {
+            let x = self.contentOffset.x
+            let w = self.bounds.size.width
+            let currentPage = Int(ceil(x/w))
+            self.blockOnPageChanged?(currentPage)
+        }
+        
+        self.blockScrollViewDidEndDecelerating?()
+    }
+    
+    public func skOnPageChanged(_ block: @escaping (_ page: Int) -> Void)
+    {
+        guard self.isPagingEnabled else {
+            debugPrint("SKCollectionView: Please enable isPagingEnabled method first before calling.\(#function)")
+            return
+        }
+        
+        self.blockOnPageChanged = block
     }
 }
