@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,22 +29,22 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrO-lV-Fg5" userLabel="viewMainContainer">
-                        <rect key="frame" x="0.0" y="126.5" width="384" height="280"/>
+                        <rect key="frame" x="0.0" y="140.5" width="384" height="252"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-hm-bU0" userLabel="imageViewIcon">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
+                                <rect key="frame" x="0.0" y="12" width="384" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="aNb-l8-qld"/>
+                                    <constraint firstAttribute="height" constant="120" id="aNb-l8-qld"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-ge-Bof" userLabel="labelSubTitle">
-                                <rect key="frame" x="12" y="200" width="360" height="0.0"/>
+                                <rect key="frame" x="12" y="172" width="360" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZJ-Pv-bKz" userLabel="buttonAction">
-                                <rect key="frame" x="12" y="220" width="360" height="48"/>
+                                <rect key="frame" x="12" y="192" width="360" height="48"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="hCO-WO-Ovq"/>
@@ -63,7 +63,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-hu-uha" userLabel="labelTitle">
-                                <rect key="frame" x="12" y="180" width="360" height="0.0"/>
+                                <rect key="frame" x="12" y="152" width="360" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@
                             <constraint firstAttribute="trailing" secondItem="nZJ-Pv-bKz" secondAttribute="trailing" constant="12" id="L57-Pd-qYN"/>
                             <constraint firstItem="NhQ-ge-Bof" firstAttribute="top" secondItem="aCj-hu-uha" secondAttribute="bottom" constant="20" id="MKb-8J-NyB"/>
                             <constraint firstAttribute="bottom" secondItem="nZJ-Pv-bKz" secondAttribute="bottom" constant="12" id="Urv-M2-gAE"/>
-                            <constraint firstItem="Bou-hm-bU0" firstAttribute="top" secondItem="mrO-lV-Fg5" secondAttribute="top" id="XJ1-lD-40W"/>
+                            <constraint firstItem="Bou-hm-bU0" firstAttribute="top" secondItem="mrO-lV-Fg5" secondAttribute="top" constant="12" id="XJ1-lD-40W"/>
                             <constraint firstAttribute="trailing" secondItem="Bou-hm-bU0" secondAttribute="trailing" id="hIl-1z-kyM"/>
                             <constraint firstItem="nZJ-Pv-bKz" firstAttribute="leading" secondItem="mrO-lV-Fg5" secondAttribute="leading" constant="12" id="kCX-tP-D68"/>
                             <constraint firstAttribute="trailing" secondItem="NhQ-ge-Bof" secondAttribute="trailing" constant="12" id="oWg-ap-AVf"/>

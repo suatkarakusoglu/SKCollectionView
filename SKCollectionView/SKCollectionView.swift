@@ -60,27 +60,31 @@ open class SKCollectionView: UICollectionView
         let fullCollectionDatas = collectionDatas.flatMap{ $0 }
         self.collectionDatas = fullCollectionDatas
         
-        if let emptyData = self.prepareEmptyCaseCollectionDataIfRequired(currentDatas: fullCollectionDatas)
-        {
-            self.collectionDatas = [emptyData]
-        }
+        let isDataEmpty = collectionDatas.first??.models.isEmpty ?? true
         
-        self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
-        self.reloadData()
+        if isDataEmpty
+        {
+            if let emptyData = self.prepareEmptyCaseCollectionData(currentDatas: fullCollectionDatas)
+            {
+                self.collectionDatas = [emptyData]
+                self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
+                self.reloadData()
+            }
+        }else
+        {
+            self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
+            self.reloadData()
+        }
     }
     
-    func prepareEmptyCaseCollectionDataIfRequired(currentDatas: [SKCollectionData]) -> SKCollectionData?
+    func prepareEmptyCaseCollectionData(currentDatas: [SKCollectionData]) -> SKCollectionData?
     {
-        let isDataEmpty = currentDatas.first?.models.isEmpty ?? true
         let isEmptyCaseExists = self.emptyCaseInfo != nil
-        let shouldFillEmptyCaseData = isDataEmpty && isEmptyCaseExists
-        guard shouldFillEmptyCaseData else { return nil }
+        guard isEmptyCaseExists else { return nil }
         
         let emptyCaseInfo = self.emptyCaseInfo!
         
-        let collectionHeight = self.bounds.size.height
-        let headerModelHeight = currentDatas.first?.headerModel?.viewSize().height ?? 0
-        let emptyModelHeight = collectionHeight - headerModelHeight
+        let emptyModelHeight: CGFloat = 280
         
         let emptyCollectionModel = SKCollectionEmptyCaseCModel(
             imageIcon: emptyCaseInfo.image,
