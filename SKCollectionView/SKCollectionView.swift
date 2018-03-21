@@ -84,7 +84,7 @@ open class SKCollectionView: UICollectionView
         
         let emptyCaseInfo = self.emptyCaseInfo!
         
-        let emptyModelHeight: CGFloat = 280
+        let emptyModelHeight: CGFloat = 320
         
         let emptyCollectionModel = SKCollectionEmptyCaseCModel(
             imageIcon: emptyCaseInfo.image,
