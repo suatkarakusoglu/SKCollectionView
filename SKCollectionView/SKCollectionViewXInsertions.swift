@@ -51,12 +51,24 @@ extension SKCollectionView
         self.skScrollToItem(at: indexPathToInsert)
     }
     
-    public func skInsertModel(model: SKCollectionModel, indexPath: IndexPath, scrollToIt: Bool = true )
+    public func skInsertModel(model: SKCollectionModel, indexPath: IndexPath, scrollToIt: Bool = false)
     {
         self.skRegisterCellFor(modelToRegister: model)
         self.collectionDatas[indexPath.section].models.insert(model, at: indexPath.row)
         self.insertItems(at: [indexPath])
-        self.skScrollToItem(at: indexPath)
+        
+        if scrollToIt
+        {
+            self.skScrollToItem(at: indexPath)
+        }
+    }
+    
+    public func skInsertModel(model: SKCollectionModel, afterModel: SKCollectionModel, scrollToIt: Bool = false)
+    {
+        guard let indexPathOfModel = self.skGetIndexPathOfModel(collectionModelToFindIndex: afterModel) else { return }
+        let rowToInsert = indexPathOfModel.row + 1
+        let indexPathToInsert = IndexPath(row: rowToInsert, section: indexPathOfModel.section)
+        self.skInsertModel(model: model, indexPath: indexPathToInsert, scrollToIt: scrollToIt)
     }
     
     public func skInsertCollectionData(collectionData: SKCollectionData, at index: Int?)
