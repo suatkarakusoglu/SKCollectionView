@@ -63,6 +63,14 @@ extension SKCollectionView
         }
     }
     
+    public func skInsertModel(model: SKCollectionModel, beforeModel: SKCollectionModel, scrollToIt: Bool = false)
+    {
+        guard let indexPathOfModel = self.skGetIndexPathOfModel(collectionModelToFindIndex: beforeModel) else { return }
+        let rowToInsert = max(indexPathOfModel.row - 1, 0)
+        let indexPathToInsert = IndexPath(row: rowToInsert, section: indexPathOfModel.section)
+        self.skInsertModel(model: model, indexPath: indexPathToInsert, scrollToIt: scrollToIt)
+    }
+    
     public func skInsertModel(model: SKCollectionModel, afterModel: SKCollectionModel, scrollToIt: Bool = false)
     {
         guard let indexPathOfModel = self.skGetIndexPathOfModel(collectionModelToFindIndex: afterModel) else { return }
