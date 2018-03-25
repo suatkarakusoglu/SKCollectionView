@@ -96,7 +96,9 @@ extension SKCollectionView
         }
         
         self.skRegisterCellFor(modelToRegister: model)
-        let lastSectionIndex = self.collectionDatas.count - 1
+        
+        let lastSectionIndex = max(self.collectionDatas.count - 1, 0)
+        
         self.collectionDatas[lastSectionIndex].models.append(model)
         let lastIndexPath = IndexPath(row: self.collectionDatas[lastSectionIndex].models.count - 1, section: lastSectionIndex)
         self.insertItems(at: [lastIndexPath])

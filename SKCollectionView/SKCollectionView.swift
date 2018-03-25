@@ -68,16 +68,13 @@ open class SKCollectionView: UICollectionView
             {
                 self.collectionDatas = [emptyCaseData]
                 self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
-                self.reloadData()
-            }else {
-                self.collectionDatas = []
-                self.reloadData()
             }
         }else
         {
             self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
-            self.reloadData()
         }
+        
+        self.reloadData()
     }
     
     func prepareEmptyCaseCollectionData(currentDatas: [SKCollectionData]) -> SKCollectionData?
