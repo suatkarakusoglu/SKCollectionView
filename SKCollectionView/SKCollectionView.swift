@@ -64,10 +64,13 @@ open class SKCollectionView: UICollectionView
         
         if isDataEmpty
         {
-            if let emptyData = self.prepareEmptyCaseCollectionData(currentDatas: fullCollectionDatas)
+            if let emptyCaseData = self.prepareEmptyCaseCollectionData(currentDatas: fullCollectionDatas)
             {
-                self.collectionDatas = [emptyData]
+                self.collectionDatas = [emptyCaseData]
                 self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
+                self.reloadData()
+            }else {
+                self.collectionDatas = []
                 self.reloadData()
             }
         }else
