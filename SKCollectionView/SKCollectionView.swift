@@ -57,10 +57,10 @@ open class SKCollectionView: UICollectionView
 
     public func skSetCollectionDatas(_ collectionDatas: [SKCollectionData?])
     {
-        let fullCollectionDatas = collectionDatas.flatMap{ $0 }
+        let fullCollectionDatas = collectionDatas.compactMap{ $0 }
         self.collectionDatas = fullCollectionDatas
         
-        let isDataEmpty = collectionDatas.first??.models.isEmpty ?? true
+        let isDataEmpty = self.collectionDatas.first?.models.isEmpty ?? true
         
         if isDataEmpty
         {
