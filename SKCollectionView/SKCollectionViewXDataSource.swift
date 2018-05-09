@@ -10,23 +10,18 @@ import UIKit
 
 extension SKCollectionView: UICollectionViewDataSource
 {
-    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         let currentModel = self.skGetModelAtIndexPath(indexPath: indexPath)
-        currentModel.ownerSKCollectionView = self
-
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: currentModel.xibTypeIdentifier(), for: indexPath) as? SKCollectionCell
-        {
-            // Delay it so that constraints are loaded before.
-            let delayApplyMilliSeconds = DispatchTimeInterval.nanoseconds(1)
-            let runAfterTime = DispatchTime.now() + delayApplyMilliSeconds
-            DispatchQueue.main.asyncAfter(deadline: runAfterTime) {
-                cell.applyModel(kollectionModel: currentModel)
-                currentModel.boundCollectionCell = cell
-            }
-            return cell
-        }
+        let reuseIdentifier = currentModel.xibTypeIdentifier()
+        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        return UICollectionViewCell()
+        guard let skCollectionCell = collectionCell as? SKCollectionCell else { return UICollectionViewCell() }
+
+        skCollectionCell.applyModel(kollectionModel: currentModel)
+        currentModel.boundCollectionCell = skCollectionCell
+        currentModel.ownerSKCollectionView = self
+        return skCollectionCell
     }
     
     open func numberOfSections(in collectionView: UICollectionView) -> Int
@@ -41,24 +36,19 @@ extension SKCollectionView: UICollectionViewDataSource
     
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
-        let activeReusableModel = { () -> SKCollectionReusableModel? in
-            let currentSection = self.collectionDatas[indexPath.section]
-            if kind == UICollectionElementKindSectionHeader {
-                return currentSection.headerModel
-            }else{
-                return currentSection.footerModel
-            }
-        }()
-        
-        guard let currentReusableModel = activeReusableModel else { return UICollectionReusableView() }
+        let currentSection = self.collectionDatas[indexPath.section]
+        let activeReusableModel = (kind == UICollectionElementKindSectionHeader) ? currentSection.headerModel : currentSection.footerModel
 
-        if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: currentReusableModel.viewTypeIdentifier(), for: indexPath) as? SKCollectionReusableView {
-            supplementaryView.applyReusableModel(reusableModel: currentReusableModel)
-            currentReusableModel.boundView = supplementaryView
-            
-            return supplementaryView
-        }
-    
-        return UICollectionReusableView()
+        guard let currentReusableModel = activeReusableModel else { return UICollectionReusableView() }
+        
+        let reuseIdentifier = currentReusableModel.viewTypeIdentifier()
+        let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        guard let skSupplementaryView = supplementaryView as? SKCollectionReusableView else { return UICollectionReusableView() }
+        
+        skSupplementaryView.applyReusableModel(reusableModel: currentReusableModel)
+        currentReusableModel.boundView = skSupplementaryView
+        
+        return skSupplementaryView
     }
 }
