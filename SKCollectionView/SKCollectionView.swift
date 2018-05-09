@@ -61,20 +61,8 @@ open class SKCollectionView: UICollectionView
         let fullCollectionDatas = collectionDatas.compactMap{ $0 }
         self.collectionDatas = fullCollectionDatas
         
-        let isDataEmpty = self.collectionDatas.first?.models.isEmpty ?? true
-        
-        if isDataEmpty
-        {
-            if let emptyCaseData = self.prepareEmptyCaseCollectionData(currentDatas: fullCollectionDatas)
-            {
-                self.collectionDatas = [emptyCaseData]
-                self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
-            }
-        }else
-        {
-            self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
-        }
-        
+        self.handleEmptyData()
+        self.collectionDatas.forEach { self.skRegisterCollectionData(collectionDataToRegister: $0) }
         self.reloadData()
     }
     
@@ -104,6 +92,16 @@ open class SKCollectionView: UICollectionView
         )
         
         return emptyCollectionData
+    }
+    
+    func handleEmptyData()
+    {
+        let isDataEmpty = self.collectionDatas.first?.models.isEmpty ?? true
+        guard isDataEmpty else { return }
+        guard let emptyData = self.prepareEmptyCaseCollectionData(currentDatas: self.collectionDatas) else { return }
+        
+        self.collectionDatas = [emptyData]
+        self.reloadData()
     }
 
     public func skGetModelAtIndexPath(indexPath: IndexPath) -> SKCollectionModel

@@ -13,12 +13,8 @@ extension Bundle
     static func skFrameworkBundle() -> Bundle
     {
         let bundle = Bundle(for: SKCollectionView.self)
-        if let path = bundle.path(forResource: "SKCollectionView", ofType: "bundle") {
-            return Bundle(path: path)!
-        }
-        else {
-            return bundle
-        }
+        guard let path = bundle.path(forResource: "SKCollectionView", ofType: "bundle") else { return bundle }
+        return Bundle(path: path)!
     }
 }
 
@@ -27,21 +23,5 @@ extension Sequence
     public func skFindFirst(predicate: (Element) -> Bool) -> Element?
     {
         return self.filter{ predicate($0) }.first
-    }
-}
-
-extension String
-{
-    public static func skRandomString(length:Int) -> String
-    {
-        let randomString:NSMutableString = NSMutableString(capacity: length)
-        let letters:NSMutableString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        var i: Int = 0
-        while i < length {
-            let randomIndex:Int = Int(arc4random_uniform(UInt32(letters.length)))
-            randomString.append("\(Character( UnicodeScalar( letters.character(at: randomIndex))!))")
-            i += 1
-        }
-        return String(randomString)
     }
 }

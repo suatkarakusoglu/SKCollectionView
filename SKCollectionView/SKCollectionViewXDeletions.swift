@@ -16,16 +16,6 @@ extension SKCollectionView
         self.collectionDatas[indexPathToRemove.section].models.remove(at: indexPathToRemove.row)
         let indexPathsToRemove = [indexPathToRemove]
         self.deleteItems(at: indexPathsToRemove)
-        
-        let isDataEmpty = self.collectionDatas.first?.models.isEmpty ?? true
-        
-        if isDataEmpty
-        {
-            if let emptyData = self.prepareEmptyCaseCollectionData(currentDatas: self.collectionDatas)
-            {
-                self.collectionDatas = [emptyData]
-                self.reloadData()
-            }
-        }
+        self.handleEmptyData()
     }
 }
