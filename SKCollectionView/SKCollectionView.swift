@@ -43,6 +43,7 @@ open class SKCollectionView: UICollectionView
         self.delegate = self
         self.dataSource = self
         let layout = self.skGetLayout()
+        
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         if #available(iOS 9.0, *) {
@@ -129,16 +130,18 @@ open class SKCollectionView: UICollectionView
     
     func skGetIndexPathOfModel(collectionModelToFindIndex: SKCollectionModel) -> IndexPath?
     {
-        var indexPath: IndexPath? = nil
-        
-        self.collectionDatas.enumerated().forEach { (indexSection: Int, collectionData: SKCollectionData) in
-            collectionData.models.enumerated().forEach({ (indexRow:Int, collectionModel: SKCollectionModel) in
+        for (indexSection, collectionData) in self.collectionDatas.enumerated()
+        {
+            for (indexRow, collectionModel) in collectionData.models.enumerated()
+            {
                 if collectionModelToFindIndex === collectionModel {
-                    indexPath = IndexPath(row: indexRow, section: indexSection)
+                    let indexPathOfModel = IndexPath(row: indexRow, section: indexSection)
+                    return indexPathOfModel
                 }
-            })
+            }
         }
-        return indexPath
+        
+        return nil
     }
     
     public func skGetLayout() -> UICollectionViewFlowLayout
@@ -148,7 +151,8 @@ open class SKCollectionView: UICollectionView
 
     func skScrollToItem(at indexPath: IndexPath, scrollPosition: UICollectionViewScrollPosition? = nil)
     {
-        let defaultScrollPosition: UICollectionViewScrollPosition = self.skGetLayout().scrollDirection == .vertical ? .bottom : .right
+        let isLayoutVertical = self.skGetLayout().scrollDirection == .vertical
+        let defaultScrollPosition: UICollectionViewScrollPosition = isLayoutVertical ? .bottom : .right
         let positionToScroll = scrollPosition ?? defaultScrollPosition
         self.scrollToItem(at: indexPath, at: positionToScroll, animated: true)
     }
