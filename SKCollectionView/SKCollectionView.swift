@@ -68,11 +68,8 @@ open class SKCollectionView: UICollectionView
     
     func prepareEmptyCaseCollectionData(currentDatas: [SKCollectionData]) -> SKCollectionData?
     {
-        let isEmptyCaseExists = self.emptyCaseInfo != nil
-        guard isEmptyCaseExists else { return nil }
-        
-        let emptyCaseInfo = self.emptyCaseInfo!
-        
+        guard let emptyCaseInfo = self.emptyCaseInfo else { return nil }
+                
         let emptyModelHeight: CGFloat = 320
         
         let emptyCollectionModel = SKCollectionEmptyCaseCModel(
