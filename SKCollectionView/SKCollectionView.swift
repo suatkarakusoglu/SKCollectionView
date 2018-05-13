@@ -29,16 +29,16 @@ open class SKCollectionView: UICollectionView
     required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-        self.initialize()
+        self.skInitialize()
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout)
     {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.initialize()
+        self.skInitialize()
     }
     
-    private func initialize()
+    private func skInitialize()
     {
         self.delegate = self
         self.dataSource = self
@@ -66,7 +66,7 @@ open class SKCollectionView: UICollectionView
         self.reloadData()
     }
     
-    func prepareEmptyCaseCollectionData(currentDatas: [SKCollectionData]) -> SKCollectionData?
+    func skPrepareEmptyCaseCollectionData(currentDatas: [SKCollectionData]) -> SKCollectionData?
     {
         guard let emptyCaseInfo = self.emptyCaseInfo else { return nil }
                 
@@ -95,7 +95,7 @@ open class SKCollectionView: UICollectionView
     {
         let isDataEmpty = self.collectionDatas.first?.models.isEmpty ?? true
         guard isDataEmpty else { return }
-        guard let emptyData = self.prepareEmptyCaseCollectionData(currentDatas: self.collectionDatas) else { return }
+        guard let emptyData = self.skPrepareEmptyCaseCollectionData(currentDatas: self.collectionDatas) else { return }
         
         self.collectionDatas = [emptyData]
         self.reloadData()
