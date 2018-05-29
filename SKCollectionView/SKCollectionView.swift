@@ -151,4 +151,9 @@ open class SKCollectionView: UICollectionView
         let positionToScroll = scrollPosition ?? defaultScrollPosition
         self.scrollToItem(at: indexPath, at: positionToScroll, animated: true)
     }
+    
+    public func skScrollToTop(animated: Bool = true)
+    {
+        self.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
+    }
 }
