@@ -156,4 +156,19 @@ open class SKCollectionView: UICollectionView
     {
         self.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
     }
+    
+    public func skChangeContentInset(top: Int? = nil, left: Int? = nil, bottom: Int? = nil, right: Int? = nil)
+    {
+        let topNew = top ?? Int(self.contentInset.top)
+        let leftNew = left ?? Int(self.contentInset.left)
+        let bottomNew = bottom ?? Int(self.contentInset.bottom)
+        let rightNew = right ?? Int(self.contentInset.right)
+        
+        self.contentInset = UIEdgeInsets(
+            top: CGFloat(topNew),
+            left: CGFloat(leftNew),
+            bottom: CGFloat(bottomNew),
+            right: CGFloat(rightNew)
+        )
+    }
 }
