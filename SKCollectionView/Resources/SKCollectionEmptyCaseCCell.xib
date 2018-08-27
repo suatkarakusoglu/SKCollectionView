@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="width" secondItem="Bou-hm-bU0" secondAttribute="height" multiplier="1:1" id="aja-1h-9HP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-ge-Bof" userLabel="labelSubTitle">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-ge-Bof" userLabel="labelSubTitle">
                                 <rect key="frame" x="12" y="142.5" width="360" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="height" constant="48" id="hCO-WO-Ovq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title=" ">
                                     <color key="titleColor" red="0.0029606991450000001" green="0.47936528919999999" blue="0.57619613410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -54,7 +54,7 @@
                                     <action selector="actionEmptyCase:" destination="gTV-IL-0wX" eventType="touchUpInside" id="a9x-K1-ZbL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-hu-uha" userLabel="labelTitle">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-hu-uha" userLabel="labelTitle">
                                 <rect key="frame" x="12" y="96" width="360" height="26.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                                 <nil key="textColor"/>
