@@ -10,6 +10,14 @@ import Foundation
 
 extension SKCollectionView
 {
+    public func skScrollViewDidEndDragging(_ block: @escaping () -> Void) {
+        self.blockScrollViewDidEndDragging = block
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.blockScrollViewDidEndDragging?()
+    }
+    
     public func skOnScrollViewDidScroll(_ block: @escaping () -> Void)
     {
         self.blockScrollViewDidScroll = block

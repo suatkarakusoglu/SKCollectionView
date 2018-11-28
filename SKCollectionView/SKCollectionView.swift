@@ -24,6 +24,7 @@ open class SKCollectionView: UICollectionView
     
     public var blockScrollViewDidScroll: (() -> Void)?
     public var blockScrollViewDidEndDecelerating: (() -> Void)?
+    public var blockScrollViewDidEndDragging: (() -> Void)?
     public var blockOnPageChanged: ((_ page: Int) -> Void)?
 
     required public init?(coder aDecoder: NSCoder)
