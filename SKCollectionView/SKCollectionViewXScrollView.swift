@@ -46,13 +46,9 @@ extension SKCollectionView
         self.blockScrollViewDidEndDecelerating?()
     }
     
-    public func skOnPageChanged(_ block: @escaping (_ page: Int) -> Void)
+    public func skEnablePaging(_ block: @escaping (_ page: Int) -> Void)
     {
-        guard self.isPagingEnabled else {
-            debugPrint("SKCollectionView: Please enable isPagingEnabled method first before calling.\(#function)")
-            return
-        }
-        
+        self.isPagingEnabled = true
         self.blockOnPageChanged = block
     }
 }
