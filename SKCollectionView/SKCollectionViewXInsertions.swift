@@ -87,7 +87,7 @@ extension SKCollectionView
         self.reloadData()
     }
     
-    public func skInserModelAtHead(model: SKCollectionModel, scrollToIt: Bool = false, scrollPosition: UICollectionViewScrollPosition? = nil)
+    public func skInsertModelAtHead(model: SKCollectionModel, scrollToIt: Bool = false, scrollPosition: UICollectionViewScrollPosition? = nil)
     {
         self.removeEmptyModel()
 
@@ -122,9 +122,14 @@ extension SKCollectionView
         }
     }
     
-    public func skInsertModelsAtTail(models: [SKCollectionModel], scrollToIt: Bool = false)
+    public func skInsertModelsAtTail(models: [SKCollectionModel])
     {
-        models.forEach{ self.skInsertModelAtTail(model: $0, scrollToIt: scrollToIt) }
+        models.forEach{ self.skInsertModelAtTail(model: $0, scrollToIt: false) }
+    }
+    
+    public func skInsertModelsAtHead(models: [SKCollectionModel])
+    {
+        models.forEach{ self.skInsertModelAtHead(model: $0, scrollToIt: false) }
     }
     
     private func removeEmptyModel()
