@@ -156,7 +156,8 @@ open class SKCollectionView: UICollectionView
     public func skScrollToTop(animated: Bool = true)
     {
         if !self.collectionDatas.isEmpty {
-            self.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: animated)
+            let firstIndexPath = IndexPath(item: 0, section: 0)
+            self.skScrollToItem(at: firstIndexPath)
         }
     }
     
