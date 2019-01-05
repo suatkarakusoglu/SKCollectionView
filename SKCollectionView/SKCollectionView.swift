@@ -155,7 +155,9 @@ open class SKCollectionView: UICollectionView
     
     public func skScrollToTop(animated: Bool = true)
     {
-        self.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
+        if !self.collectionDatas.isEmpty {
+            self.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: animated)
+        }
     }
     
     public func skChangeContentInset(top: Int? = nil, left: Int? = nil, bottom: Int? = nil, right: Int? = nil)
