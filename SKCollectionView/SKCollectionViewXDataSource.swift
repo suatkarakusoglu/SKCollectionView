@@ -37,7 +37,7 @@ extension SKCollectionView: UICollectionViewDataSource
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         let currentSection = self.collectionDatas[indexPath.section]
-        let isHeaderSection = kind == UICollectionElementKindSectionHeader
+        let isHeaderSection = kind == UICollectionView.elementKindSectionHeader
         let activeReusableModel = isHeaderSection ? currentSection.headerModel : currentSection.footerModel
 
         guard let currentReusableModel = activeReusableModel else { return UICollectionReusableView() }

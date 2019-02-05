@@ -22,7 +22,7 @@ extension SKCollectionView
         refreshControlForSK.addTarget(
             self,
             action: #selector(SKCollectionView.refresh),
-            for: UIControlEvents.valueChanged
+            for: UIControl.Event.valueChanged
         )
         
         if #available(iOS 10.0, *) {

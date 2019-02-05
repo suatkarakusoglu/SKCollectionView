@@ -43,12 +43,12 @@ extension SKCollectionView
         
         self.skRegisterReusableModel(
             reusableModel: collectionDataToRegister.headerModel,
-            viewKind: UICollectionElementKindSectionHeader
+            viewKind: UICollectionView.elementKindSectionHeader
         )
         
         self.skRegisterReusableModel(
             reusableModel: collectionDataToRegister.footerModel,
-            viewKind: UICollectionElementKindSectionFooter
+            viewKind: UICollectionView.elementKindSectionFooter
         )
     }
 }

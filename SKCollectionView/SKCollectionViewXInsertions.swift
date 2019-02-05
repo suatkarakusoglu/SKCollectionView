@@ -87,7 +87,7 @@ extension SKCollectionView
         self.reloadData()
     }
     
-    public func skInsertModelAtHead(model: SKCollectionModel, scrollToIt: Bool = false, scrollPosition: UICollectionViewScrollPosition? = nil)
+    public func skInsertModelAtHead(model: SKCollectionModel, scrollToIt: Bool = false, scrollPosition: UICollectionView.ScrollPosition? = nil)
     {
         self.removeEmptyModel()
 
