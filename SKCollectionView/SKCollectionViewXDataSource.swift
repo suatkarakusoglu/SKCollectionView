@@ -47,7 +47,7 @@ extension SKCollectionView: UICollectionViewDataSource
         
         guard let skSupplementaryView = supplementaryView as? SKCollectionReusableView else { return UICollectionReusableView() }
         
-        skSupplementaryView.applyReusableModel(reusableModel: currentReusableModel)
+        skSupplementaryView.applyReusableModel(currentReusableModel)
         currentReusableModel.boundView = skSupplementaryView
         
         return skSupplementaryView

@@ -33,7 +33,7 @@ open class SKCollectionReusableModel
     
     open func refreshBoundView()
     {
-        self.boundView?.applyReusableModel(reusableModel: self)
+        self.boundView?.applyReusableModel(self)
     }
 }
 

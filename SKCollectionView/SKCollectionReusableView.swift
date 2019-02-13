@@ -12,17 +12,17 @@ open class SKCollectionReusableView: UICollectionReusableView
 {
     var reusableModel: SKCollectionReusableModel?
     
-    open func applyReusableModel(reusableModel: SKCollectionReusableModel)
+    open func applyReusableModel(_ model: SKCollectionReusableModel)
     {
-        self.reusableModel = reusableModel
+        self.reusableModel = model
         
-        let isViewSelectable = reusableModel.selectionBlock != nil
-        let isSelectableGestureNotAdded = reusableModel.viewSelectedGestureRecognizer == nil
+        let isViewSelectable = model.selectionBlock != nil
+        let isSelectableGestureNotAdded = model.viewSelectedGestureRecognizer == nil
         let shouldAddTapGesture = isViewSelectable && isSelectableGestureNotAdded
         
         if shouldAddTapGesture
         {
-            guard reusableModel.viewSelectedGestureRecognizer == nil else { return }
+            guard model.viewSelectedGestureRecognizer == nil else { return }
             
             let viewTapGesture = UITapGestureRecognizer(
                 target: self,
