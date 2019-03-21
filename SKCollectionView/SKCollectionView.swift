@@ -26,7 +26,10 @@ open class SKCollectionView: UICollectionView
     public var blockScrollViewDidEndDecelerating: (() -> Void)?
     public var blockScrollViewDidEndDragging: (() -> Void)?
     public var blockOnPageChanged: ((_ page: Int) -> Void)?
-
+   
+    public var customPagingItemWidth: CGFloat?
+    public var customCurrentPage: Int = 0
+    
     required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
