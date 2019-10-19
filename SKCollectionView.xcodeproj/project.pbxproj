@@ -256,12 +256,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = suat.karakusoglu;
 				TargetAttributes = {
 					E2011D131F6678B30062168F = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					E2011D1C1F6678B30062168F = {
