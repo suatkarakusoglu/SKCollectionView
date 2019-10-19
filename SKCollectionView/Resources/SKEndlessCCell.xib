@@ -17,36 +17,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="174" height="85"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eT-b5-XZ6">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eT-b5-XZ6" userLabel="viewContainer">
                         <rect key="frame" x="0.0" y="0.0" width="174" height="85"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-rl-Ahz">
-                                <rect key="frame" x="65" y="20.5" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="DEB-iR-DuE"/>
-                                    <constraint firstAttribute="width" secondItem="ykF-rl-Ahz" secondAttribute="height" id="cyE-0r-iyJ"/>
-                                </constraints>
-                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="S5k-1A-qgm">
+                                <rect key="frame" x="68.5" y="24" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ykF-rl-Ahz" firstAttribute="centerX" secondItem="4eT-b5-XZ6" secondAttribute="centerX" id="0dG-vt-h0M"/>
-                            <constraint firstItem="ykF-rl-Ahz" firstAttribute="centerY" secondItem="4eT-b5-XZ6" secondAttribute="centerY" id="8BI-E2-Ham"/>
+                            <constraint firstItem="S5k-1A-qgm" firstAttribute="centerX" secondItem="4eT-b5-XZ6" secondAttribute="centerX" id="4zo-OE-gxV"/>
+                            <constraint firstItem="S5k-1A-qgm" firstAttribute="centerY" secondItem="4eT-b5-XZ6" secondAttribute="centerY" id="jYo-P4-0MI"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="4eT-b5-XZ6" secondAttribute="trailing" id="0g6-DW-p9O"/>
+                <constraint firstItem="OlR-48-3M1" firstAttribute="trailing" secondItem="4eT-b5-XZ6" secondAttribute="trailing" id="18F-GL-lWd"/>
                 <constraint firstItem="4eT-b5-XZ6" firstAttribute="top" secondItem="j5P-Q7-eFD" secondAttribute="top" id="8nb-bh-S7s"/>
+                <constraint firstItem="4eT-b5-XZ6" firstAttribute="top" secondItem="OlR-48-3M1" secondAttribute="top" id="AGx-db-91o"/>
+                <constraint firstItem="4eT-b5-XZ6" firstAttribute="leading" secondItem="OlR-48-3M1" secondAttribute="leading" id="LX6-fb-Qog"/>
                 <constraint firstAttribute="bottom" secondItem="4eT-b5-XZ6" secondAttribute="bottom" id="klO-di-p9h"/>
+                <constraint firstItem="OlR-48-3M1" firstAttribute="bottom" secondItem="4eT-b5-XZ6" secondAttribute="bottom" id="pZd-bZ-4GV"/>
                 <constraint firstItem="4eT-b5-XZ6" firstAttribute="leading" secondItem="j5P-Q7-eFD" secondAttribute="leading" id="sg1-5e-HwG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="OlR-48-3M1"/>
             <size key="customSize" width="174" height="85"/>
-            <connections>
-                <outlet property="imageViewLoading" destination="ykF-rl-Ahz" id="wc6-2e-Gv3"/>
-            </connections>
             <point key="canvasLocation" x="-12" y="-32"/>
         </collectionViewCell>
     </objects>
