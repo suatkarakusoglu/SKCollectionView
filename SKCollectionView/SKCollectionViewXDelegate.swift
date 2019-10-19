@@ -53,28 +53,23 @@ extension SKCollectionView: UICollectionViewDelegate
         }
     }
     
-    func prepareEndReachedModel(loadingImage: UIImage? = nil) -> SKEndlessCModel
+    func prepareEndReachedModel() -> SKEndlessCModel
     {
-        let defaultLoadingImage =  UIImage(named: "icon_loading", in: Bundle.skFrameworkBundle(), compatibleWith: nil)!
-
-        let imageToShowWhileLoading = loadingImage ?? defaultLoadingImage
-        let imageWidth = imageToShowWhileLoading.size.width
-        let imageHeight = imageToShowWhileLoading.size.height
-        
+        let indicatorHeight: CGFloat = 44
         let heightPadding: CGFloat = 40
-        let cellHeight = imageHeight + heightPadding
-        let cellWidth = self.isScrollingVertically() ? UIScreen.main.bounds.size.width : imageWidth
+        let cellHeight = indicatorHeight + heightPadding
+        let cellWidth = self.isScrollingVertically() ? UIScreen.main.bounds.size.width : indicatorHeight
         
         let cellSize = CGSize(width: cellWidth, height: cellHeight)
         
-        let endReachedModel = SKEndlessCModel(loadingSize: cellSize, loadingImage: imageToShowWhileLoading)
+        let endReachedModel = SKEndlessCModel(loadingSize: cellSize)
         endReachedModel.isInsideFramework = true
         return endReachedModel
     }
 
-    public func skEndReached(loadingImage: UIImage? = nil, endReachedBlock: @escaping (() -> Void))
+    public func skEndReached(endReachedBlock: @escaping (() -> Void))
     {
-        let modelForEndReached = self.prepareEndReachedModel(loadingImage: loadingImage)
+        let modelForEndReached = self.prepareEndReachedModel()
         self.skEndReached(model: modelForEndReached, endReachedBlock: endReachedBlock)
     }
     

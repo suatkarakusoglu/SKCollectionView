@@ -21,7 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="174" height="85"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6w1-sn-OiQ">
-                                <rect key="frame" x="68.5" y="24" width="37" height="37"/>
+                                <rect key="frame" x="65" y="20.5" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="FWe-4v-qFg"/>
+                                    <constraint firstAttribute="height" constant="44" id="MpA-Gi-Iph"/>
+                                </constraints>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

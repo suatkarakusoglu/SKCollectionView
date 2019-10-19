@@ -10,13 +10,11 @@ import UIKit
 
 class SKEndlessCModel: SKCollectionModel
 {
-    let loadingImage: UIImage
     let loadingSize: CGSize
     
-    public init(loadingSize: CGSize, loadingImage: UIImage)
+    public init(loadingSize: CGSize)
     {
         self.loadingSize = loadingSize
-        self.loadingImage = loadingImage 
     }
     
     override func cellType() -> SKCollectionCell.Type
