@@ -20,18 +20,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eT-b5-XZ6">
                         <rect key="frame" x="0.0" y="0.0" width="174" height="85"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-rl-Ahz">
-                                <rect key="frame" x="65" y="20.5" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="DEB-iR-DuE"/>
-                                    <constraint firstAttribute="width" secondItem="ykF-rl-Ahz" secondAttribute="height" id="cyE-0r-iyJ"/>
-                                </constraints>
-                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6w1-sn-OiQ">
+                                <rect key="frame" x="68.5" y="24" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ykF-rl-Ahz" firstAttribute="centerX" secondItem="4eT-b5-XZ6" secondAttribute="centerX" id="0dG-vt-h0M"/>
-                            <constraint firstItem="ykF-rl-Ahz" firstAttribute="centerY" secondItem="4eT-b5-XZ6" secondAttribute="centerY" id="8BI-E2-Ham"/>
+                            <constraint firstItem="6w1-sn-OiQ" firstAttribute="centerY" secondItem="4eT-b5-XZ6" secondAttribute="centerY" id="UED-Md-W21"/>
+                            <constraint firstItem="6w1-sn-OiQ" firstAttribute="centerX" secondItem="4eT-b5-XZ6" secondAttribute="centerX" id="Y8a-cA-k0Z"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,7 +41,7 @@
             <viewLayoutGuide key="safeArea" id="OlR-48-3M1"/>
             <size key="customSize" width="174" height="85"/>
             <connections>
-                <outlet property="imageViewLoading" destination="ykF-rl-Ahz" id="wc6-2e-Gv3"/>
+                <outlet property="activityIndicatorView" destination="6w1-sn-OiQ" id="tMc-gw-YHr"/>
             </connections>
             <point key="canvasLocation" x="-12" y="-32"/>
         </collectionViewCell>
